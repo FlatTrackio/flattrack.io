@@ -36,3 +36,9 @@ $link-focus-border: $primary;
 @import "~buefy/src/scss/buefy";
 
 </style>
+
+<style>
+html {
+  scroll-behavior: smooth
+}
+</style>
