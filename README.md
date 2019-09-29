@@ -1,6 +1,6 @@
-# vuejs-express-buefy-template
+# flattrack.io
 
-> A quick-start template
+> Home page for FlatTrack.io
 
 ## Build Setup
 
@@ -29,5 +29,3 @@ npm test
 # run backend + frontend (requires npm run build)
 npm start
 ```
-
-
