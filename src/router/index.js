@@ -16,6 +16,12 @@ export default new Router({
       path: '*',
       name: 'unknown-page',
       component: unknownPage
+    },
+    {
+      path: '/moreinfo',
+      name: 'home-more-info',
+      component: home,
+      redirect: '/'
     }
   ]
 })

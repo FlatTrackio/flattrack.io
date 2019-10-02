@@ -1,7 +1,7 @@
 {
-  "name": "vuejs-express-buefy-template",
+  "name": "flattrack.io",
   "version": "0.0.1",
-  "description": "A quick-start template",
+  "description": "FlatTrack website",
   "author": "Caleb Woodbine <calebwoodbine.public@gmail.com>",
   "private": true,
   "scripts": {
