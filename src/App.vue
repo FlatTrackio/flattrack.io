@@ -28,9 +28,11 @@ $colors: (
     "danger": ($danger, $danger-invert)
 );
 
-$link: $white;
+$link: #2c77c9;
 $link-invert: $black;
 $link-focus-border: $primary;
+
+$footer-padding: 1rem 1.5rem 1rem;
 
 @import "~bulma";
 @import "~buefy/src/scss/buefy";

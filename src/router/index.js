@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/public/home'
+import about from '@/components/public/about'
 import unknownPage from '@/components/public/unknown-page'
 
 Vue.use(Router)
@@ -13,15 +14,20 @@ export default new Router({
       component: home
     },
     {
-      path: '*',
-      name: 'unknown-page',
-      component: unknownPage
-    },
-    {
       path: '/moreinfo',
       name: 'home-more-info',
       component: home,
       redirect: '/'
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: about
+    },
+    {
+      path: '*',
+      name: 'unknown-page',
+      component: unknownPage
     }
   ]
 })
