@@ -29,7 +29,6 @@ export default {
         onConfirm: (value) => {
           axios.post('/api/interested', {form: {email: value}}).then(resp => {
             this.interestedMessage = `${resp.data.counter} people are interested`
-            console.log(resp)
             Notification.open({
               duration: 8000,
               message: `Thank you for being interested, I've notified the developers.`,

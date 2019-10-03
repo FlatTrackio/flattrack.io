@@ -34,7 +34,7 @@ export default {
         {
           name: 'Tasks',
           shortDescription: 'Self management of tasks',
-          description: 'Tasks are assigned and rotated with a frequency of never, daily, weekly, or monthly. Flatmembers are notified about the task assigned to them throughout the cycle. Once the task has been completed, flatmembers mark is as done.'
+          description: 'Tasks are assigned and rotated with a frequency of never, daily, weekly, or monthly. Flatmembers are notified about the task assigned to them throughout the cycle. Once the task has been completed, flatmembers mark it as done.'
         },
         {
           name: 'Shopping List',
@@ -44,12 +44,12 @@ export default {
         {
           name: 'Noticeboard',
           shortDescription: 'Post to your flatmates',
-          description: 'Send posts of information out to your flatmates, so they know what\'s going on.'
+          description: 'Post messages onto the flat noticeboard, so your flatmates know what\'s going on.'
         },
         {
           name: 'Shared Calendar',
           shortDescription: 'Keep track of events',
-          description: 'Keep up-to-date with events that are happening with your flatmates. Integrates with your existing calendar.'
+          description: 'Keep up-to-date with events that are happening with your flatmates. Integrate with your existing calendar.'
         },
         {
           name: 'Recipes',

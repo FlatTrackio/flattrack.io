@@ -44,7 +44,7 @@
           <div class="card">
             <div class="card-content">
               <p class="subtitle">
-                Repository
+                Development
               </p>
               <p class="title">
                 <a href="https://gitlab.com/flattrack">gitlab.com/flattrack</a>

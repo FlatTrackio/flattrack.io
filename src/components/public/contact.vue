@@ -21,6 +21,18 @@
                     <div class="card">
                         <div class="card-content">
                         <p class="subtitle">
+                            Hold tight there.
+                        </p>
+                        <p class="title">
+                            No contact available yet. <br>
+                            We're still getting things ready, so we'll update this soon.
+                        </p>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="card">
+                        <div class="card-content">
+                        <p class="subtitle">
                             Email
                         </p>
                         <p class="title">
@@ -29,21 +41,25 @@
                         </p>
                         </div>
                     </div>
+                    -->
                 </div>
             </section>
           </div>
         </div>
       </section>
+      <ftfooter/>
     </div>
 </template>
 
 <script>
 import navbar from '@/components/common/navbar'
+import ftfooter from '@/components/common/footer'
 
 export default {
   name: 'contact',
   components: {
-    navbar
+    navbar,
+    ftfooter
   }
 }
 </script>

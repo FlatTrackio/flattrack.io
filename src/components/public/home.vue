@@ -55,7 +55,7 @@
               - Make it easier to manage common things in a flat <br>
               - Avoid human conflict over forgetting tasks <br>
               - Provide features which bring a flat into collaboration (such as the recipes, and calendar) <br>
-              - Have a Free and Open Source solution to organising a flat <br>
+              - Have a stream-lined non-techical Free and Open Source solution to organising a flat <br>
             </p>
           </div>
         </div>
@@ -66,7 +66,7 @@
         <div class="section">
           <div class="hero-body">
             <h1 class="title is-2">
-              Free and Open Source - Community Project
+              Free and Open Source Community Project
             </h1>
             <p class="subtitle is-4">
               FlatTrack's source code will be Freely available, licensed under GPL-3.0. <br><br>

@@ -8,18 +8,23 @@
             </template>
             <template slot="start">
                 <b-navbar-item href="/">
-                Home
+                    Home
                 </b-navbar-item>
+                <!--
                 <b-navbar-item href="https://docs.flattrack.io">
-                Documentation
+                    Documentation
                 </b-navbar-item>
+                <b-navbar-item href="https://blog.flattrack.io">
+                    Blog
+                </b-navbar-item>
+                -->
                 <b-navbar-dropdown label="Info">
-                <b-navbar-item href="/#/about">
-                    About
-                </b-navbar-item>
-                <b-navbar-item href="/#/contact">
-                    Contact
-                </b-navbar-item>
+                    <b-navbar-item href="/#/about">
+                        About
+                    </b-navbar-item>
+                    <b-navbar-item href="/#/contact">
+                        Contact
+                    </b-navbar-item>
                 </b-navbar-dropdown>
             </template>
             <template slot="end" v-if="accountButtons">
