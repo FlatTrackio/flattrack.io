@@ -6,9 +6,12 @@ const bodyParser = require('body-parser')
 const app = express()
 const path = require('path')
 const morgan = require('morgan')
+const functions = require('./functions')
 
 // development port is 8080
 var port = process.env.APP_PORT || 8080
+
+functions.config.init()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({

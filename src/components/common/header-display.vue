@@ -3,7 +3,7 @@
     <section class="hero is-info">
       <div class="hero-body">
         <p class="title">
-          FlatTrack
+          FlatTrack.io
         </p>
         <p class="subtitle">
           Keep track of your flat

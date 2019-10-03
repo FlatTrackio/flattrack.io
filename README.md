@@ -1,4 +1,4 @@
-# flattrack.io
+# FlatTrack.io
 
 > Home page for FlatTrack.io
 

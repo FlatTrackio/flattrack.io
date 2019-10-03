@@ -1,0 +1,53 @@
+<template>
+    <div>
+        <navbar/>
+        <section class="hero">
+        <div class="hero-body">
+          <div class="container">
+            <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li class="is-active"><a href="/#/about">Contact</a></li>
+              </ul>
+            </nav>
+            <h1 class="title is-1">
+              Contact Us
+            </h1>
+            <h2 class="subtitle is-3">
+              You may wish to enquire about something, here's how to contact us
+            </h2>
+            <section class="section">
+                <div class="container">
+                    <div class="card">
+                        <div class="card-content">
+                        <p class="subtitle">
+                            Email
+                        </p>
+                        <p class="title">
+                            Send us an email at:
+                            <a href="mailto:info@flattrack.io">info@flattrack.io</a>
+                        </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+</template>
+
+<script>
+import navbar from '@/components/common/navbar'
+
+export default {
+  name: 'contact',
+  components: {
+    navbar
+  }
+}
+</script>
+
+<style scope>
+
+</style>

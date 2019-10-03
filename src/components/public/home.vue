@@ -1,11 +1,11 @@
 <template>
   <div>
-    <navbar v-if="navbar"/>
+    <navbar :logo=logo :accountButtons=accountButtons v-if="navbar"/>
     <section class="hero is-info is-fullheight is-bold">
       <div class="hero-body">
         <div class="container has-text-centered">
           <div class="section">
-            <img src="" alt="FlatTrack logo - center" class="image is-256x256" v-if="navbar">
+            <img src="" alt="FlatTrack logo - center" class="image is-256x256" v-if="logo">
             <h1 class="title is-1">
               FlatTrack
             </h1>
@@ -36,17 +36,26 @@
       </section>
     </div>
     <div class="has-text-centered">
+      <section class="hero is-dark is-small is-bold">
+        <div class="section">
+          <h1 class="title is-2">Herd cats no longer!</h1>
+          <p class="subtitle is-4">Let us solve the frustration and help with collaboration</p>
+          <img src="" alt="herding cats" v-if="logo">
+        </div>
+      </section>
+    </div>
+    <div class="has-text-centered">
       <section class="hero is-small is-bold">
         <div class="section">
           <h1 class="title is-2">The Goal of FlatTrack</h1>
-          <p class="subtitle is-4">The goals we aim to achieve</p>
+          <p class="subtitle is-4">What we aim to achieve to</p>
           <br>
           <div class="content">
             <p>
               - Make it easier to manage common things in a flat <br>
               - Avoid human conflict over forgetting tasks <br>
               - Provide features which bring a flat into collaboration (such as the recipes, and calendar) <br>
-              - A Free and Open Source solution <br>
+              - Have a Free and Open Source solution to organising a flat <br>
             </p>
           </div>
         </div>
@@ -78,8 +87,12 @@
             <p class="subtitle is-4">
               Early equiries will be available soon, we look forward to helping you out soon
             </p>
+            <br><br>
+            <div class="container">
+              <progress class="progress is-primary" value="15" max="100">15%</progress>
+            </div>
             <section class="section">
-              <sendInterested/>
+              <interested/>
             </section>
           </div>
         </div>
@@ -92,20 +105,22 @@
 <script>
 import navbar from '@/components/common/navbar'
 import features from '@/components/public/home/features'
-import sendInterested from '@/components/public/home/interest-send'
+import interested from '@/components/public/home/interested'
 import ftfooter from '@/components/common/footer'
 
 export default {
   name: 'home',
   data () {
     return {
-      navbar: false
+      navbar: true,
+      logo: false,
+      accountButtons: false
     }
   },
   components: {
     navbar,
     features,
-    sendInterested,
+    interested,
     ftfooter
   },
   created () {
