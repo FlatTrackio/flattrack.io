@@ -1,7 +1,6 @@
 #!/usr/bin/node
 
 const express = require('express')
-const expressSession = require('express-session')
 const bodyParser = require('body-parser')
 const app = express()
 const path = require('path')
@@ -18,19 +17,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 
-app.set('trust proxy', 1)
-
-app.use(expressSession({
-    secret: 'abcdefghifjklmnopqrstuvwxyz1234567890',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        // 2 hours
-        maxAge: 1000 * 60 * 60 * 2,
-        sameSite: true,
-        secure: process.env.NODE_ENV === 'production'
-    }
-}))
+app.set('trust proxy', true)
 
 app.use(express.json())
 app.use(morgan('combined'))
