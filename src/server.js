@@ -29,11 +29,11 @@ app.use('/api', routes)
 app.use(express.static(path.join(__dirname, '..', 'dist')))
 
 app.get(/(.*)/, (req, res) => {
-    res.redirect('/#/unknown-page')
+    res.redirect('/')
 })
 
 // start service
 app.listen(port, () => {
     console.log(`Running on port ${port}`)
 })
-  
+
