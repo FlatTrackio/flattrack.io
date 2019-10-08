@@ -28,8 +28,12 @@ app.use('/api', routes)
 // Sends static files  from the public path directory
 app.use(express.static(path.join(__dirname, '..', 'dist')))
 
-app.get(/(.*)/, (req, res) => {
+app.get('/#', (req, res) => {
     res.redirect('/')
+})
+
+app.get(/(.*)/, (req, res) => {
+    res.redirect('/#/unknown-page')
 })
 
 // start service

@@ -3,10 +3,11 @@
 var express = require('express')
 var router = express.Router()
 const functions = require('./functions')
+const packageJSON = require('../package.json')
 
 router.route('/')
     .get((req, res, next) => {
-        res.json({message: "Welcome to FlatTrack.io"})
+        res.json({message: "Welcome to FlatTrack.io", version: packageJSON.version })
         res.status(200)
         res.end()
     })
