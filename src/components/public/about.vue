@@ -44,20 +44,20 @@
           <div class="card">
             <div class="card-content">
               <p class="subtitle">
-                Development
+                Developed on
               </p>
               <p class="title">
-                <a href="https://gitlab.com/flattrack">gitlab.com/flattrack</a>
+                <a href="https://gitlab.com/flattrack">GitLab</a>
               </p>
             </div>
           </div>
           <div class="card">
             <div class="card-content">
               <p class="subtitle">
-                Contact
+                Contact found
               </p>
               <p class="title">
-                <a href="/#/contact">Contact page</a>
+                <a href="/#/contact">Here</a>
               </p>
             </div>
           </div>

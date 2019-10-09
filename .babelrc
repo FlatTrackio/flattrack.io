@@ -11,7 +11,7 @@
   "plugins": ["transform-vue-jsx", "transform-runtime"],
   "env": {
     "test": {
-      "presets": ["env", "stage-2"],
+      "presets": ["@babel/preset-env", "@babel/preset-stage-4"],
       "plugins": ["transform-vue-jsx", "istanbul"]
     }
   }

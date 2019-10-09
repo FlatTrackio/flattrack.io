@@ -1,6 +1,6 @@
 {
   "name": "flattrack.io",
-  "version": "0.0.1-1",
+  "version": "0.0.1-2",
   "description": "FlatTrack website",
   "author": "Caleb Woodbine <calebwoodbine.public@gmail.com>",
   "private": true,
@@ -10,7 +10,9 @@
     "start": "node src/server.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e",
+    "mocha": "mocha",
+    "test": "npm run mocha",
+    "test-unused": "npm run mocha && npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js"
   },

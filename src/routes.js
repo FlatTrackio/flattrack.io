@@ -7,8 +7,8 @@ const packageJSON = require('../package.json')
 
 router.route('/')
     .get((req, res, next) => {
-        res.json({message: "Welcome to FlatTrack.io", version: packageJSON.version })
         res.status(200)
+        res.json({message: "Welcome to FlatTrack.io", version: packageJSON.version })
         res.end()
     })
 
@@ -23,16 +23,16 @@ router.route('/interested')
             if (! configJSON.emails.includes(form.email)) {
                 configJSON.emails = [...configJSON.emails, form.email]
                 functions.config.write(configJSON)
-                res.json({ message: 'Added to notify list sucessfully.', counter: configJSON.emails.length })
-                res.status(200).end()
+                res.status(200)
+                res.json({ message: 'Added to notify list sucessfully.' }).end()
             } else {
-                res.json({ message: 'Already subscribed' })
-                res.status(200).end()
+                res.status(200)
+                res.json({ message: 'Already subscribed' }).end()
             }
             return
         } else {
-            res.json({ message: 'An error occured' })
-            res.status(400).end()
+            res.status(400)
+            res.json({ message: 'An error occured' }).end()
             return
         }
     })

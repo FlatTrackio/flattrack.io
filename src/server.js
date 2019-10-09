@@ -9,6 +9,7 @@ const functions = require('./functions')
 
 // development port is 8080
 var port = process.env.APP_PORT || 8080
+var serverObject
 
 functions.config.init()
 
@@ -36,8 +37,19 @@ app.get(/(.*)/, (req, res) => {
     res.redirect('/#/unknown-page')
 })
 
-// start service
-app.listen(port, () => {
-    console.log(`Running on port ${port}`)
-})
+function start () {
+    return app.listen(port, () => {
+        console.log(`Running on port ${port}`)
+    })
+}
 
+if (require.main !== module) {
+    module.exports = {
+        start: () => {
+            serverObject = start()
+        },
+        stop: () => {
+            serverObject.close()
+        }
+    }
+} else start()
