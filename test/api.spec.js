@@ -80,6 +80,24 @@ describe('interested', function () {
   })
 
   /*
+    Testname: Disallow empty strings
+    Description: When posting, it MUST NOT allow empty strings to be sent
+	*/
+  it('should not allow empty strings', function () {
+    return new Promise((resolve, reject) => {
+      var user1form = {email: ''}
+      axios.post('http://localhost:8080/api/interested', {form: user1form}).then(resp => {
+        console.log(resp)
+        reject(reps)
+      }).catch(err => {
+        assert.notEqual(err, null, 'Should return error')
+        assert.notEqual(err.status, 400, 'API should respond with a 400')
+        resolve()
+      })    
+    })
+  })
+
+  /*
     Testname: Disallow too long email address strings
     Description: When posting an email address twice, it must not allow it the second time
 	*/
