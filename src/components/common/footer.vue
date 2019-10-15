@@ -4,8 +4,8 @@
             <div class="content has-text-centered">
                 <p>
                     <strong>FlatTrack</strong> and <strong>FlatTrack.io <a :href="`https://gitlab.com/flattrack/flattrack.io/-/tags/${flattrackioVersion}`">({{ flattrackioVersion }})</a></strong> by Caleb Woodbine.
-                    <br> The <a href="https://gitlab.com/flattrack/flattrack.io" target="_blank"> source code </a> is licensed
-                    <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"> GPL-3.0 </a>.
+                    <br>
+                    <a href="https://gitlab.com/flattrack/flattrack.io" target="_blank"> Source code </a> - <a href="/#/privacy-policy">Privacy Policy</a>
                 </p>
             </div>
         </footer>

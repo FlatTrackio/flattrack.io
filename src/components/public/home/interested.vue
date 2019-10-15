@@ -1,5 +1,6 @@
 <template>
     <div>
+        <headerDisplay/>
         <b-button type="is-light" rounded size="is-large" @click="sendInterested" :label="interestedMessage"></b-button>
         <br><br>
         <p>Let us know if you're interested</p>
@@ -20,7 +21,7 @@ export default {
   methods: {
     sendInterested: () => {
       Dialog.prompt({
-        message: `Please enter your email, so we can notify you when the first version is ready.`,
+        message: `Please enter your email, so we can notify you when the first version is ready and when we are ready.`,
         inputAttrs: {
           placeholder: 'xxxxxx@xxxxxxx.xxx',
           maxlength: 70,

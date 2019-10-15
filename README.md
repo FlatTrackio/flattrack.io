@@ -2,10 +2,7 @@
     <img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg" alt="License" />
 </a>
 <a href="https://gitlab.com/flattrack/flattrack.io/releases">
-    <img src="https://img.shields.io/badge/version-0.0.1-brightgreen.svg" />
-</a>
-<a href="https://gitlab.com/flattrack/flattrack.io/releases">
-    <img src="https://img.shields.io/badge/build-1-orange.svg" />
+    <img src="https://img.shields.io/badge/version-0.0.2-brightgreen.svg" />
 </a>
 <br>
 <img alt="FlatTrackLogo" src="" width=100>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <headerDisplay genericMessage="true"/>
+        <headerDisplay/>
         <div class="container">
             <section class="section is-large">
                 <h2 class="title is-2">Unknown page!</h2>

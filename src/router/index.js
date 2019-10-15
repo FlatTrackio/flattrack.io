@@ -4,6 +4,7 @@ import home from '@/components/public/home'
 import about from '@/components/public/about'
 import contact from '@/components/public/contact'
 import unknownPage from '@/components/public/unknown-page'
+import privacyPolicy from '@/components/public/privacy-policy'
 
 Vue.use(Router)
 
@@ -16,8 +17,6 @@ export default new Router({
     },
     {
       path: '/moreinfo',
-      name: 'home-more-info',
-      component: home,
       redirect: '/'
     },
     {
@@ -29,6 +28,15 @@ export default new Router({
       path: '/contact',
       name: 'contact',
       component: contact
+    },
+    {
+      path: '/privacy-policy',
+      name: 'privacy',
+      component: privacyPolicy
+    },
+    {
+      path: '/privacy',
+      redirect: '/privacy-policy'
     },
     {
       path: '*',

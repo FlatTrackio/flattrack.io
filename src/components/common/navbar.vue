@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-navbar transparent="false" type="is-light">
+        <b-navbar fixed-top transparent="false" type="is-light">
             <template slot="brand" v-if="logo">
                 <b-navbar-item tag="router-link" :to="{ path: '/' }">
                 <img src="" alt="FlatTrack logo - topbar">

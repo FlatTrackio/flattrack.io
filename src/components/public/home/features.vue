@@ -34,7 +34,7 @@ export default {
         {
           name: 'Tasks',
           shortDescription: 'Self management of tasks',
-          description: 'Tasks are assigned and rotated with a frequency of never, daily, weekly, or monthly. Flatmembers are notified about the task assigned to them throughout the cycle. Once the task has been completed, flatmembers mark it as done.'
+          description: 'Tasks are assigned and rotated either never, daily, weekly, or monthly. Email reminders are sent out. When tasks are completed, they are to be marked as such.'
         },
         {
           name: 'Shopping List',

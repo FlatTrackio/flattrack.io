@@ -39,7 +39,7 @@
       <section class="hero is-dark is-small is-bold">
         <div class="section">
           <h1 class="title is-2">Herd cats no longer!</h1>
-          <p class="subtitle is-4">Let us solve the frustration and help with collaboration</p>
+          <p class="subtitle is-4">Hand the reminders over to us. </p>
           <img src="" alt="herding cats" v-if="logo">
         </div>
       </section>
@@ -69,10 +69,12 @@
               Free and Open Source Community Project
             </h1>
             <p class="subtitle is-4">
-              FlatTrack's source code will be Freely available, licensed under GPL-3.0. <br><br>
+              Built for the Community by the Community <br>
+              FlatTrack's source code will be Freely available, licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GPL-3.0</a>
+              <br><br>
               Contributors welcome!
             </p>
-            <b-button type="is-primary" inverted outlined tag="a" target="_blank" href="https://simple.wikipedia.org/wiki/Free_and_open-source_software">Tell me more about this</b-button>
+            <b-button type="is-primary" inverted outlined tag="a" target="_blank" href="https://simple.wikipedia.org/wiki/Free_and_open-source_software">What does Free and Open Source mean?</b-button>
           </div>
         </div>
       </section>
@@ -89,7 +91,7 @@
             </p>
             <br><br>
             <div class="container">
-              <progress class="progress is-primary" value="15" max="100">15%</progress>
+              <progress class="progress is-primary" value="25" max="100">25%</progress>
             </div>
             <section class="section">
               <interested/>
