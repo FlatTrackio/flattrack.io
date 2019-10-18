@@ -1,6 +1,7 @@
 <template>
     <div>
         <navbar/>
+        <headerDisplay/>
         <section class="hero">
         <div class="hero-body">
           <div class="container">
@@ -54,12 +55,14 @@
 <script>
 import navbar from '@/components/common/navbar'
 import ftfooter from '@/components/common/footer'
+import headerDisplay from '../common/header-display'
 
 export default {
   name: 'contact',
   components: {
     navbar,
-    ftfooter
+    ftfooter,
+    headerDisplay
   }
 }
 </script>

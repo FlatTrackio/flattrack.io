@@ -9,6 +9,9 @@ import privacyPolicy from '@/components/public/privacy-policy'
 Vue.use(Router)
 
 export default new Router({
+  scrollBehavior: () => {
+    return { x: 0, y: 0 }
+  },
   routes: [
     {
       path: '/',

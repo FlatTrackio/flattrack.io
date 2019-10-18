@@ -12,7 +12,7 @@
                     <p class="subtitle">{{ feature.shortDescription }}</p>
                     <div class="notification">
                         <div class="content">
-                            <p>
+                            <p class="subtitle is-5">
                                 {{ feature.description }}
                             </p>
                         </div>

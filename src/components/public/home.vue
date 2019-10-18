@@ -51,7 +51,7 @@
           <p class="subtitle is-4">What we aim to achieve to</p>
           <br>
           <div class="content">
-            <p>
+            <p class="subtitle is-5">
               - Make it easier to manage common things in a flat <br>
               - Avoid human conflict over forgetting tasks <br>
               - Provide features which bring a flat into collaboration (such as the recipes, and calendar) <br>

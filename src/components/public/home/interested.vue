@@ -3,7 +3,7 @@
         <headerDisplay/>
         <b-button type="is-light" rounded size="is-large" @click="sendInterested" :label="interestedMessage"></b-button>
         <br><br>
-        <p>Let us know if you're interested</p>
+        <p class="subtitle is-5">Let us know if you're interested</p>
     </div>
 </template>
 
