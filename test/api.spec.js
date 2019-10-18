@@ -98,7 +98,7 @@ describe('interested', function () {
   })
 
   /*
-    Testname: Disallow too long email address strings
+    Testname: Disallow email addresses posting multiple times
     Description: When posting an email address twice, it must not allow it the second time
 	*/
   it('should not allow duplicate email address strings to be saved', function () {

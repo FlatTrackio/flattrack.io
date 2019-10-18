@@ -5,6 +5,7 @@ RUN chown -R node:node /opt/flattrack.io
 USER node
 WORKDIR /opt/flattrack.io
 RUN npm i
+RUN npm run build
 ENV PUID=1000 \
     PGID=1000 \
     NODE_ENV=production \
