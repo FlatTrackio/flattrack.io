@@ -21,6 +21,7 @@
   - Under construction
 - About
 - Contact
+- Privacy Policy
 
 ## Contributing guide
 Please read [the contributing guide](docs/CONTRIBUTING.md)
