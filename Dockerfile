@@ -9,7 +9,7 @@ FROM golang:1.13.4-alpine3.10 AS api
 WORKDIR /opt/flattrack.io
 COPY . .
 RUN adduser -D flattrack
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o flattrackio src/server.go
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o flattrackio src/server/server.go
 
 FROM scratch
 WORKDIR /opt/flattrack.io
