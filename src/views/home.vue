@@ -74,7 +74,7 @@
               <br><br>
               Contributors welcome!
             </p>
-            <b-button type="is-primary" inverted outlined tag="a" target="_blank" href="https://simple.wikipedia.org/wiki/Free_and_open-source_software">What does Free and Open Source mean?</b-button>
+            <b-button type="is-primary" inverted outlined tag="a" target="_blank" href="https://simple.wikipedia.org/wiki/Free_and_open-source_software">What's FOSS?</b-button>
           </div>
         </div>
       </section>
@@ -91,7 +91,7 @@
             </p>
             <br><br>
             <div class="container">
-              <progress class="progress is-primary" value="25" max="100">25%</progress>
+              <b-progress type="is-primary" :value="25" max="100">25%</b-progress>
             </div>
             <section class="section">
               <interested/>
@@ -105,10 +105,10 @@
 </template>
 
 <script>
-import navbar from '@/components/common/navbar'
-import features from '@/components/public/home/features'
-import interested from '@/components/public/home/interested'
-import ftfooter from '@/components/common/footer'
+import navbar from '@/components/navbar'
+import features from '@/components/features'
+import interested from '@/components/interested'
+import ftfooter from '@/components/footer'
 
 export default {
   name: 'home',

@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '@/components/public/home'
-import about from '@/components/public/about'
-import contact from '@/components/public/contact'
-import unknownPage from '@/components/public/unknown-page'
-import privacyPolicy from '@/components/public/privacy-policy'
+import home from '@/views/home'
+import about from '@/views/about'
+import contact from '@/views/contact'
+import unknownPage from '@/views/unknown-page'
+import privacyPolicy from '@/views/privacy-policy'
 
 Vue.use(Router)
 

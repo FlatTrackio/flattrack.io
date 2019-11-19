@@ -53,9 +53,9 @@
 </template>
 
 <script>
-import navbar from '@/components/common/navbar'
-import ftfooter from '@/components/common/footer'
-import headerDisplay from '../common/header-display'
+import navbar from '@/components/navbar'
+import ftfooter from '@/components/footer'
+import headerDisplay from '@/components/header-display'
 
 export default {
   name: 'contact',

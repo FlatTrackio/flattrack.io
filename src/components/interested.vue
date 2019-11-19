@@ -21,14 +21,15 @@ export default {
   methods: {
     sendInterested: () => {
       Dialog.prompt({
-        message: `Please enter your email, so we can notify you when the first version is ready and when we are ready.`,
+        message: `Enter your email, so we can notify you when the first version is ready and when we are ready. <br><br> Note: By submitting your email address, you agree to FlatTrack's privacy policy.`,
         inputAttrs: {
           placeholder: 'xxxxxx@xxxxxxx.xxx',
           maxlength: 70,
           type: 'email'
         },
         onConfirm: (value) => {
-          axios.post('/api/interested', {form: {email: value}}).then(resp => {
+          axios.post(`/api/interested?email=${value}`, {form: {email: value}}).then(resp => {
+            console.log(resp)
             Notification.open({
               duration: 8000,
               message: `Thank you for being interested! ${resp.data.message}`,
@@ -37,6 +38,7 @@ export default {
               hasIcon: true
             })
           }).catch(err => {
+            console.log(err)
             Notification.open({
               duration: 8000,
               message: `An error has occured: ${err}`,

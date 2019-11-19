@@ -63,9 +63,9 @@
 </template>
 
 <script>
-import navbar from '@/components/common/navbar'
-import headerDisplay from '../common/header-display'
-import ftfooter from '@/components/common/footer'
+import navbar from '@/components/navbar'
+import headerDisplay from '@/components/header-display'
+import ftfooter from '@/components/footer'
 
 export default {
   name: 'privacy-policy',
