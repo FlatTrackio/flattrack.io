@@ -4,6 +4,9 @@ stages:
   - build
   - buildTag
 
+include:
+  template: Dependency-Scanning.gitlab-ci.yml
+
 test:
   image: node:12.10.0-alpine
   stage: test
