@@ -1,3 +1,24 @@
+// FlatTrack.io - common.go
+
+//
+// Copyright (C) 2018 Caleb Woodbine <@>
+//
+// This file is part of FlatTrack.io.
+//
+// FlatTrack is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// FlatTrack.io is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with FlatTrack.io.  If not, see <https://www.gnu.org/licenses/>.
+//
+
 package common
 
 import (
@@ -10,7 +31,17 @@ import (
         "flattrack.io/src/server/types"
 )
 
+func GetAppPort () (output string) {
+        // determine the port for the app to run on
+        output = os.Getenv("APP_PORT")
+        if output == "" {
+                output = ":8080"
+        }
+        return output
+}
+
 func Find (slice []string, val string) (int, bool) {
+        // determine if string is in string array
         for i, item := range slice {
                 if item == val {
                         return i, true
@@ -20,6 +51,7 @@ func Find (slice []string, val string) (int, bool) {
 }
 
 func LoadPackageJSON () (output map[string]interface{}) {
+        // return contents of package.json
 	packageJSON, err := os.Open("package.json")
 	if err != nil {
 		fmt.Println(err.Error())
@@ -31,6 +63,7 @@ func LoadPackageJSON () (output map[string]interface{}) {
 }
 
 func JSONstoreExists () (exists bool) {
+        // determine if deployment/config.json exists / the app has been initialised
 	currentWorkingDirectory, _ := os.Getwd()
 	if _, err := os.Stat(fmt.Sprintf("%v/%v/%v", currentWorkingDirectory, "deployment", "config.json")); err == nil {
 		exists = true
@@ -41,22 +74,32 @@ func JSONstoreExists () (exists bool) {
 }
 
 func InitJSONstore () (completed bool) {
+        // create deployment/config.json
 	currentWorkingDirectory, _ := os.Getwd()
 	emptyJSONstore := types.EmailStore{}
 	if ! JSONstoreExists() {
+                log.Println("Creating deployment/config.json")
 		err := os.MkdirAll(fmt.Sprintf("%v/%v", currentWorkingDirectory, "deployment"), os.ModePerm)
 		if err == nil {
 			completed = WriteJSONstore(emptyJSONstore)
 		} else {
+                        fmt.Println("Initialisation error:", err)
 			os.Exit(1)
 		}
 	}
 	return completed
 }
 
-func DeinitJSONstore () (completed bool) {
-	currentWorkingDirectory, _ := os.Getwd()
-	err := os.Remove(fmt.Sprintf("%v/%v/%v", currentWorkingDirectory, "deployment", "config.json"))
+func DeinitJSONstore (altConfig string) (completed bool) {
+        // remove deployment/config.json (used for tests)
+        var filePath string
+        if altConfig == "" {
+                currentWorkingDirectory, _ := os.Getwd()
+                filePath = fmt.Sprintf("%v/%v/%v", currentWorkingDirectory, "deployment", "config.json")
+        } else {
+                filePath = altConfig
+        }
+	err := os.Remove(filePath)
 	completed = true
 	if err != nil {
 		completed = false
@@ -64,9 +107,16 @@ func DeinitJSONstore () (completed bool) {
 	return completed
 }
 
-func ReadJSONstore () (output types.EmailStore) {
-	currentWorkingDirectory, _ := os.Getwd()
-	emailStore, err := os.Open(fmt.Sprintf("%v/%v/%v", currentWorkingDirectory, "deployment", "config.json"))
+func ReadJSONstore (altConfig string) (output types.EmailStore) {
+        // read contents of deployment/config.json
+        var filePath string
+        if altConfig == "" {
+                currentWorkingDirectory, _ := os.Getwd()
+                filePath = fmt.Sprintf("%v/%v/%v", currentWorkingDirectory, "deployment", "config.json")
+        } else {
+                filePath = altConfig
+        }
+        emailStore, err := os.Open(filePath)
 	if err != nil {
 		fmt.Println(err.Error())
 	}
@@ -77,6 +127,7 @@ func ReadJSONstore () (output types.EmailStore) {
 }
 
 func WriteJSONstore (content types.EmailStore) (completed bool) {
+        // write data to deployment/config.json
 	currentWorkingDirectory, _ := os.Getwd()
 	contentAsJSONString, _ := json.Marshal(content)
 	err := ioutil.WriteFile(fmt.Sprintf("%v/%v/%v", currentWorkingDirectory, "deployment", "config.json"), []byte(contentAsJSONString), 0644)
@@ -87,6 +138,7 @@ func WriteJSONstore (content types.EmailStore) (completed bool) {
 }
 
 func JSONResponse (w http.ResponseWriter, code int, output interface{}) {
+        // send a JSON response
 	response, _ := json.Marshal(output)
 	//w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
@@ -95,6 +147,7 @@ func JSONResponse (w http.ResponseWriter, code int, output interface{}) {
 }
 
 func Logging(next http.Handler) http.Handler {
+        // log all requests
         return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
                 // Do stuff here
                 log.Printf("%v %v %v %v %v", r.Method, r.URL, r.Proto, r.Response, r.RemoteAddr)

@@ -7,13 +7,15 @@ stages:
 include:
   template: Dependency-Scanning.gitlab-ci.yml
 
-test:
-  image: node:12.10.0-alpine
+test_e2e:
+  image: golang:1.13.4-alpine3.10
   stage: test
   before_script:
-    - npm i
+    - go get -v -d ./...
+    - go install ./...
+    - go run src/server/server.go &
   script:
-    - npm run test
+    - $GOPATH/bin/ginkgo ./test
 
 versionFind:
   image: node:12.10.0-alpine

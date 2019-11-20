@@ -2,11 +2,18 @@
 
 > Getting started
 
+## Dependencies
+- nodejs (10+)
+- npm
+- golang (1.13+)
+
 ## Local
 
 ``` bash
 # install dependencies
 npm install
+go get -v d ./...
+go install ./...
 
 # serve UI with hot reload at localhost:8080
 npm run dev-ui
@@ -33,7 +40,7 @@ npm start
 ## Local deployment and testing
 Build with docker (or podman)
 ```bash
-docker build -t flattrack.io:latest .
+docker build -t registry.gitlab.com/flattrack/flattrack.io:latest .
 ```
 
 Run with docker
@@ -42,5 +49,5 @@ Run with docker
 docker volume create flattrack.io_deployment
 
 # bring up an instance
-docker run -d -p 8080:8080 -v flattrack.io_deployment:/opt/flattrack.io/deployment:z --name flattrack.io --read-only flattrack.io:latest
+docker run -d -p 8080:8080 -v flattrack.io_deployment:/opt/flattrack.io/deployment:z --name flattrack.io --read-only registry.gitlab.com/flattrack/flattrack.io:latest
 ```
