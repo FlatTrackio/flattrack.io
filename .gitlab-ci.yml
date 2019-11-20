@@ -8,14 +8,13 @@ include:
   template: Dependency-Scanning.gitlab-ci.yml
 
 test_e2e:
-  image: golang:1.13.4-alpine3.10
+  image: golang:1.13.4-buster
   stage: test
   before_script:
-    - apk add git
     - go get -v -d ./...
     - go install ./...
-    - go get github.com/onsi/ginkgo/ginkgo
-    - go get github.com/onsi/gomega/...
+    - go get -v github.com/onsi/ginkgo/ginkgo
+    - go get -v github.com/onsi/gomega/...
     - go run src/server/server.go &
   script:
     - $GOPATH/bin/ginkgo ./test
