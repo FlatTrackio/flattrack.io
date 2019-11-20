@@ -2,8 +2,6 @@
     <div>
         <div class="container">
             <section class="section">
-                <h1 class="title is-2">Features</h1>
-                <p class="subtitle -is4">What FlatTrack will provide</p>
                 <div class="tile is-ancestor" v-for="feature in features" v-bind:key="feature">
                 <div class="tile is-parent">
                     <article class="tile is-child box">

@@ -6,7 +6,7 @@
           FlatTrack.io
         </p>
         <p class="subtitle">
-          Keep track of your flat
+          Keep track of your flat or community house
         </p>
       </div>
     </section>

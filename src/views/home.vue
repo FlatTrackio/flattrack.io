@@ -25,10 +25,10 @@
         <div class="section">
           <div class="hero-body">
             <h1 class="title is-2" id="moreinfo">
-              What is FlatTrack?
+              Features
             </h1>
             <p class="subtitle is-4">
-              A solution to keep many areas of your flat or community house organised
+              What FlatTrack will provide
             </p>
           </div>
           <features/>
@@ -38,8 +38,8 @@
     <div class="has-text-centered">
       <section class="hero is-dark is-small is-bold">
         <div class="section">
-          <h1 class="title is-2">Herd cats no longer!</h1>
-          <p class="subtitle is-4">Hand the reminders over to us. </p>
+          <h1 class="title is-1">Herd cats no longer!</h1>
+          <p class="subtitle is-4">Hand the reminders over to us.</p>
           <img src="" alt="herding cats" v-if="logo">
         </div>
       </section>
@@ -47,16 +47,15 @@
     <div class="has-text-centered">
       <section class="hero is-small is-bold">
         <div class="section">
-          <h1 class="title is-2">The Goal of FlatTrack</h1>
-          <p class="subtitle is-4">What we aim to achieve to</p>
-          <br>
+          <h1 class="title is-1">The Goal of FlatTrack</h1>
+          <p class="subtitle is-4">We aim to:</p>
           <div class="content">
-            <p class="subtitle is-5">
-              - Make it easier to manage common things in a flat <br>
-              - Avoid human conflict over forgetting tasks <br>
-              - Provide features which bring a flat into collaboration (such as the recipes, and calendar) <br>
-              - Have a stream-lined non-techical Free and Open Source solution to organising a flat <br>
-            </p>
+            <dl class="is-medium">
+              <li> make it easier to manage common things in a flat </li>
+              <li> leverage technology to avoid human conflict over forgetting tasks </li>
+              <li> provide features which bring a flat into collaboration (such as the recipes, and calendar) </li>
+              <li> have a stream-lined non-techical Free and Open Source solution to organising a flat </li>
+            </dl>
           </div>
         </div>
       </section>
@@ -65,13 +64,14 @@
       <section class="hero is-primary is-small is-bold">
         <div class="section">
           <div class="hero-body">
-            <h1 class="title is-2">
+            <h1 class="title is-1">
               Free and Open Source Community Project
             </h1>
             <p class="subtitle is-4">
-              Built for the Community by the Community <br>
-              FlatTrack's source code will be Freely available, licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GPL-3.0</a>
+              Built for the Community by the Community.
               <br><br>
+              FlatTrack's source code will be Freely available, licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GPL-3.0.</a>
+              <br>
               Contributors welcome!
             </p>
             <b-button type="is-primary" inverted outlined tag="a" target="_blank" href="https://simple.wikipedia.org/wiki/Free_and_open-source_software">What's FOSS?</b-button>
@@ -83,11 +83,11 @@
       <section class="hero is-warning is-small is-bold">
         <div class="section">
           <div class="hero-body">
-            <h1 class="title is-2">
+            <h1 class="title is-1">
               FlatTrack is under construction
             </h1>
             <p class="subtitle is-4">
-              Early equiries will be available soon, we look forward to helping you out soon
+              Early equiries will be available soon, we look forward to helping you and your flat.
             </p>
             <br><br>
             <div class="container">

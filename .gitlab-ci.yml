@@ -17,7 +17,7 @@ test_e2e:
     - go get -v github.com/onsi/gomega/...
     - go run src/server/server.go &
   script:
-    - $GOPATH/bin/ginkgo ./test
+    - $GOPATH/bin/ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --progress ./test
 
 versionFind:
   image: node:12.10.0-alpine
