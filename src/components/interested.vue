@@ -1,7 +1,7 @@
 <template>
     <div>
         <headerDisplay/>
-        <b-button type="is-light" rounded size="is-large" @click="sendInterested" :label="interestedMessage"></b-button>
+        <b-button type="is-light" rounded size="is-medium" @click="sendInterested" :label="interestedMessage"></b-button>
         <br><br>
         <p class="subtitle is-5">Let us know if you're interested</p>
     </div>

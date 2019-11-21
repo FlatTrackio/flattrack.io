@@ -14,7 +14,7 @@
             <h1 class="title is-1">
               About Us
             </h1>
-            <h2 class="subtitle is-3">
+            <h2 class="subtitle is-4">
               Get to know us a bit more
             </h2>
           </div>
@@ -23,7 +23,7 @@
       <div class="container">
         <div class="card">
           <div class="card-content">
-            <p class="subtitle">
+            <p class="subtitle is-3">
               Who are we?
             </p>
             <p class="title">
@@ -33,31 +33,31 @@
         </div>
         <div class="card">
           <div class="card-content">
-            <p class="subtitle">
+            <p class="subtitle is-3">
               Located in
             </p>
             <p class="title">
-              Tauranga, New Zealand
+              Tauranga, New Zealand.
             </p>
           </div>
         </div>
         <div class="card">
           <div class="card-content">
-            <p class="subtitle">
+            <p class="subtitle is-3">
               Developed on
             </p>
             <p class="title">
-              <a href="https://gitlab.com/flattrack">GitLab</a>
+              <a href="https://gitlab.com/flattrack">GitLab</a>.
             </p>
           </div>
         </div>
         <div class="card">
           <div class="card-content">
-            <p class="subtitle">
+            <p class="subtitle is-3">
               Contact found
             </p>
             <p class="title">
-              <a href="/#/contact">Here</a>
+              <a href="/#/contact">Here</a>.
             </p>
           </div>
         </div>

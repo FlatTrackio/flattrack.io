@@ -14,26 +14,25 @@
             <h1 class="title is-1">
               Contact Us
             </h1>
-            <h2 class="subtitle is-3">
-              You may wish to enquire about something, here's how to contact us
+            <h2 class="subtitle is-4">
+              You may wish to enquire about something, here's how to contact us.
             </h2>
             <section class="section">
                 <div class="container">
                     <div class="card">
                         <div class="card-content">
-                        <p class="subtitle">
+                        <p class="subtitle is-3">
                             Hold tight there.
                         </p>
                         <p class="title">
-                            No contact available yet. <br>
-                            We're still getting things ready, so we'll update this soon.
+                            We're still getting things ready, we'll update this soon.
                         </p>
                         </div>
                     </div>
                     <!--
                     <div class="card">
                         <div class="card-content">
-                        <p class="subtitle">
+                        <p class="subtitle is-3">
                             Email
                         </p>
                         <p class="title">

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <navbar :logo=logo :accountButtons=accountButtons v-if="navbar"/>
         <headerDisplay/>
         <div class="container">
             <section class="section is-large">
@@ -21,6 +22,7 @@
 </template>
 
 <script>
+import navbar from '@/components/navbar'
 import headerDisplay from '@/components/header-display'
 
 export default {
@@ -28,9 +30,13 @@ export default {
   pageLocation: location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''),
   data () {
     return {
+      navbar: true,
+      logo: false,
+      accountButtons: false
     }
   },
   components: {
+    navbar,
     headerDisplay
   }
 }

@@ -4,13 +4,20 @@ stages:
   - build
   - buildTag
 
-test:
-  image: node:12.10.0-alpine
+include:
+  template: Dependency-Scanning.gitlab-ci.yml
+
+test_e2e:
+  image: golang:1.13.4-buster
   stage: test
   before_script:
-    - npm i
+    - go get -v -d ./...
+    - go install ./...
+    - go get -v github.com/onsi/ginkgo/ginkgo
+    - go get -v github.com/onsi/gomega/...
+    - go run src/server/server.go &
   script:
-    - npm run test
+    - $GOPATH/bin/ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --progress ./test
 
 versionFind:
   image: node:12.10.0-alpine
