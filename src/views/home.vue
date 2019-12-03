@@ -1,7 +1,7 @@
 <template>
   <div>
     <navbar :logo=logo :accountButtons=accountButtons v-if="navbar"/>
-    <section class="hero is-info is-fullheight is-bold">
+    <section class="hero is-info is-medium is-bold">
       <div class="hero-body">
         <div class="container has-text-centered">
           <div class="section">
@@ -12,9 +12,6 @@
             <h2 class="subtitle is-3">
               Keep track of your flat or community house
             </h2>
-            <b-button tag="a" href="#moreinfo" size="is-large" type="is-light">
-              Tell me more
-            </b-button>
           </div>
         </div>
       </div>
@@ -28,7 +25,7 @@
               Features
             </h1>
             <p class="subtitle is-4">
-              What FlatTrack will provide
+              What FlatTrack will do
             </p>
           </div>
           <features/>
@@ -36,7 +33,7 @@
       </section>
     </div>
     <div class="has-text-centered">
-      <section class="hero is-dark is-small is-bold">
+      <section class="hero is-dark is-small">
         <div class="section">
           <h1 class="title is-1">Herd cats no longer!</h1>
           <p class="subtitle is-4">Hand the reminders over to us.</p>
@@ -48,9 +45,10 @@
       <section class="hero is-small is-bold">
         <div class="section">
           <h1 class="title is-1">The Goal of FlatTrack</h1>
+          <br>
           <p class="subtitle is-4">We aim to:</p>
           <div class="content">
-            <dl class="is-medium">
+            <dl class="is-large">
               <li> make it easier to manage common things in a flat </li>
               <li> leverage technology to avoid human conflict over forgetting tasks </li>
               <li> provide features which bring a flat into collaboration (such as the recipes, and calendar) </li>
@@ -67,6 +65,7 @@
             <h1 class="title is-1">
               Free and Open Source Community Project
             </h1>
+            <br>
             <p class="subtitle is-4">
               Built for the Community by the Community.
               <br><br>
@@ -80,7 +79,7 @@
       </section>
     </div>
     <div class="has-text-centered">
-      <section class="hero is-warning is-small is-bold">
+      <section class="hero is-warning is-small">
         <div class="section">
           <div class="hero-body">
             <h1 class="title is-1">
@@ -89,7 +88,7 @@
             <p class="subtitle is-4">
               Early equiries will be available soon, we look forward to helping you and your flat.
             </p>
-            <br><br>
+            <br>
             <div class="container">
               <b-progress type="is-primary" :value="25" max="100">25%</b-progress>
             </div>
