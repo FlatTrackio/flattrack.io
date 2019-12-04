@@ -5,7 +5,7 @@ stages:
 include:
   template: Dependency-Scanning.gitlab-ci.yml
 
-test_e2e:
+test:
   image: golang:1.13.4-buster
   stage: test
   before_script:
