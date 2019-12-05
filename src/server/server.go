@@ -22,29 +22,39 @@
 package main
 
 import (
-	"net/http"
 	"log"
+	"net/http"
+	"time"
+
+	"flattrack.io/src/server/common"
+	"flattrack.io/src/server/routes"
+	"github.com/ddo/go-vue-handler"
 	"github.com/gorilla/mux"
-        "flattrack.io/src/server/common"
-        "flattrack.io/src/server/routes"
 )
 
-func handleWebserver () {
-        // manage starting of webserver
-        port := common.GetAppPort()
+func handleWebserver() {
+	// manage starting of webserver
+	port := common.GetAppPort()
 	router := mux.NewRouter().StrictSlash(true)
-        router.Host("flattrack.io")
+	router.Host("flattrack.io")
 	router.HandleFunc("/api", routes.APIroot).Methods("GET")
 	router.HandleFunc("/api/interested", routes.APIinterested).Methods("POST")
-	router.HandleFunc("/{.*}", routes.UnknownPage).Methods("GET")
-	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./dist/"))).Methods("GET")
-        router.Use(common.Logging)
+	//router.HandleFunc("/{.*}", routes.UnknownPage).Methods("GET")
+	router.PathPrefix("/").Handler(vue.Handler("./dist/")).Methods("GET")
+	router.Use(common.Logging)
+	srv := &http.Server{
+		Handler:      router,
+		Addr:         port,
+		WriteTimeout: 15 * time.Second,
+		ReadTimeout:  15 * time.Second,
+	}
+
 	log.Println("Listening on", port)
-	log.Fatal(http.ListenAndServe(port, router))
+	log.Fatal(srv.ListenAndServe())
 }
 
-func main () {
-        // initialise the app
-        common.InitJSONstore()
-        handleWebserver()
+func main() {
+	// initialise the app
+	common.InitJSONstore()
+	handleWebserver()
 }

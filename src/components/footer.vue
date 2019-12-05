@@ -5,7 +5,7 @@
                 <p>
                     <strong>FlatTrack</strong> and <strong>FlatTrack.io <a :href="`https://gitlab.com/flattrack/flattrack.io/-/tags/${flattrackioVersion}`" target="_blank">({{ flattrackioVersion }})</a></strong> by Caleb Woodbine.
                     <br>
-                    <a href="https://gitlab.com/flattrack/flattrack.io" target="_blank"> Source code </a> - <a href="/#/privacy-policy">Privacy Policy</a>
+                    <a href="https://gitlab.com/flattrack/flattrack.io" target="_blank"> Source code </a> - <a href="/privacy-policy">Privacy Policy</a>
                 </p>
             </div>
         </footer>

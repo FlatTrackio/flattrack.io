@@ -8,7 +8,7 @@
             <nav class="breadcrumb is-medium has-arrow-separator" aria-label="breadcrumbs">
               <ul>
                 <li><a href="/">Home</a></li>
-                <li class="is-active"><a href="/#/about">Contact</a></li>
+                <li class="is-active"><a href="/about">Contact</a></li>
               </ul>
             </nav>
             <h1 class="title is-1">
