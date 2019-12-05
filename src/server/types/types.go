@@ -21,10 +21,15 @@
 
 package types
 
+type JSONResponseMetadata struct {
+	URL string `json:"url"`
+}
+
 // format of a stand JSON response
 type JSONMessageResponse struct {
-	Message string `json:"message"`
-	Version string `json:"version"`
+	Message  string               `json:"message"`
+	Version  string               `json:"version"`
+	Metadata JSONResponseMetadata `json:"metadata"`
 }
 
 // how deployment/config.json should be formatted
