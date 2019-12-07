@@ -12,7 +12,7 @@ RUN adduser -D flattrack
 RUN rm -rf deployment && \
     mkdir -p deployment && \
     chown flattrack deployment
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o flattrackio src/server/server.go
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static" -s -w' -o flattrackio src/server/server.go
 
 FROM scratch
 WORKDIR /opt/flattrack.io

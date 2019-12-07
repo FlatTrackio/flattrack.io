@@ -80,7 +80,6 @@ func APIinterested(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func UnknownPage(w http.ResponseWriter, r *http.Request) {
-	http.Redirect(w, r, "/unknown-page", 302)
-	//common.JSONResponse(r, w, 404, types.JSONMessageResponse{Message: "This page doesn't seem to exist."})
+func APIUnknownEndpoint(w http.ResponseWriter, r *http.Request) {
+	common.JSONResponse(r, w, 404, types.JSONMessageResponse{Message: "This endpoint doesn't seem to exist."})
 }

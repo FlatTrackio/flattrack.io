@@ -39,7 +39,10 @@ func handleWebserver() {
 	router.Host("flattrack.io")
 	router.HandleFunc("/api", routes.APIroot).Methods("GET")
 	router.HandleFunc("/api/interested", routes.APIinterested).Methods("POST")
-	//router.HandleFunc("/{.*}", routes.UnknownPage).Methods("GET")
+	router.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "./dist/static/robots.txt")
+	})
+	router.HandleFunc("/api/{.*}", routes.APIUnknownEndpoint)
 	router.PathPrefix("/").Handler(vue.Handler("./dist/")).Methods("GET")
 	router.Use(common.Logging)
 	srv := &http.Server{

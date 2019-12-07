@@ -151,7 +151,7 @@ func Logging(next http.Handler) http.Handler {
 	// log all requests
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Do stuff here
-		log.Printf("%v %v %v %v %v %v", r.Method, r.URL, r.Proto, r.Response, r.RemoteAddr, r.Header)
+		log.Printf("%v %v %v %v %v %v", r.Header["User-Agent"], r.Method, r.URL, r.Proto, r.Response, r.RemoteAddr)
 		// Call the next handler, which can be another middleware in the chain, or the final handler.
 		next.ServeHTTP(w, r)
 	})
