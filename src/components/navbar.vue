@@ -14,10 +14,10 @@
                 <b-navbar-item href="https://docs.flattrack.io">
                     Documentation
                 </b-navbar-item>
+                -->
                 <b-navbar-item href="https://blog.flattrack.io">
                     Blog
                 </b-navbar-item>
-                -->
                 <b-navbar-dropdown label="Info">
                     <b-navbar-item href="/about">
                         About
