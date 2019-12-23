@@ -27,7 +27,7 @@
               Who are we?
             </p>
             <p class="title">
-              A Free and Open Source development company started in 2019.
+              A Free and Open Source development company, started in 2019.
             </p>
           </div>
         </div>
