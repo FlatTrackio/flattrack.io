@@ -65,7 +65,6 @@
       <br><br>
       <ftfooter/>
     </div>
-    <!---->
 </template>
 
 <script>
