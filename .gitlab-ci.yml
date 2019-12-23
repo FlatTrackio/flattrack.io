@@ -18,8 +18,8 @@ test:
     - $GOPATH/bin/ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --progress ./test
   only:
     changes:
-      - test/**
-      - src/**
+      - test/
+      - src/
       - go.mod
 
 build:
@@ -35,6 +35,6 @@ build:
     - test
   only:
     changes:
-      - src/**
+      - src/
       - Dockerfile
       - go.mod
