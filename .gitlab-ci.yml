@@ -13,7 +13,7 @@ test:
     - go install ./...
     - go get -v github.com/onsi/ginkgo/ginkgo
     - go get -v github.com/onsi/gomega/...
-    - go run src/server/server.go &
+    - go run src/backend/server.go &
   script:
     - $GOPATH/bin/ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --progress ./test
 
