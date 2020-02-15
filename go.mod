@@ -1,4 +1,4 @@
-module flattrack.io
+module gitlab.com/flattrack/flattrack.io
 
 go 1.13
 
