@@ -16,6 +16,9 @@ test:
     - go run src/backend/main.go &
   script:
     - $GOPATH/bin/ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --progress ./test
+  only:
+    changes:
+      - src/**/*
 
 build:
   stage: build

@@ -1,12 +1,12 @@
 FROM node:12.10.0-alpine AS ui
-WORKDIR /opt/flattrack.io
+WORKDIR /app
 COPY . .
 RUN npm i
 RUN npm rebuild node-sass
-RUN npm run build-ui
+RUN npm run build:frontend
 
 FROM golang:1.13.4-alpine3.10 AS api
-WORKDIR /opt/flattrack.io
+WORKDIR /app
 COPY . .
 RUN adduser -D flattrack
 RUN rm -rf deployment && \
@@ -15,13 +15,13 @@ RUN rm -rf deployment && \
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static" -s -w' -o flattrackio src/server/server.go
 
 FROM scratch
-WORKDIR /opt/flattrack.io
-ENV PATH=/opt/flattrack.io
-COPY --from=ui /opt/flattrack.io/dist /opt/flattrack.io/dist
-COPY --from=ui /opt/flattrack.io/package.json .
-COPY --from=api /opt/flattrack.io/flattrackio .
+WORKDIR /app
+ENV PATH=/app
+COPY --from=ui /app/dist /app/dist
+COPY --from=ui /app/package.json .
+COPY --from=api /app/flattrackio .
 COPY --from=api /etc/passwd /etc/passwd
-COPY --chown=flattrack --from=api /opt/flattrack.io/deployment /opt/flattrack.io/deployment
+COPY --chown=flattrack --from=api /app/deployment /app/deployment
 EXPOSE 8080
 USER flattrack
-ENTRYPOINT ["/opt/flattrack.io/flattrackio"]
+ENTRYPOINT ["/app/flattrackio"]
