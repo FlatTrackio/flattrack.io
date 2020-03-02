@@ -36,7 +36,6 @@ func handleWebserver() {
 	// manage starting of webserver
 	port := common.GetAppPort()
 	router := mux.NewRouter().StrictSlash(true)
-	router.Host("flattrack.io")
 	router.HandleFunc("/api", routes.APIroot).Methods("GET")
 	router.HandleFunc("/api/interested", routes.APIinterested).Methods("POST")
 	router.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {

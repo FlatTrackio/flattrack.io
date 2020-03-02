@@ -49,5 +49,5 @@ Run with docker
 docker volume create flattrack.io_deployment
 
 # bring up an instance
-docker run -d -p 8080:8080 -v flattrack.io_deployment:/opt/flattrack.io/deployment:z --name flattrack.io --read-only registry.gitlab.com/flattrack/flattrack.io:latest
+docker run -d -p 8080:8080 -v flattrack.io_deployment:/app/deployment:z --name flattrack.io --read-only registry.gitlab.com/flattrack/flattrack.io:latest
 ```
