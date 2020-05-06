@@ -38,16 +38,6 @@ npm start
 ```
 
 ## Local deployment and testing
-Build with docker (or podman)
-```bash
-docker build -t registry.gitlab.com/flattrack/flattrack.io:latest .
 ```
-
-Run with docker
-```bash
-# create volume
-docker volume create flattrack.io_deployment
-
-# bring up an instance
-docker run -d -p 8080:8080 -v flattrack.io_deployment:/app/deployment:z --name flattrack.io --read-only registry.gitlab.com/flattrack/flattrack.io:latest
+tilt up --host 0.0.0.0
 ```

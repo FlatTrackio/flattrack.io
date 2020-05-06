@@ -1,6 +1,10 @@
 <template>
     <div>
-        <b-navbar fixed-top transparent="false" type="is-light">
+      <b-navbar
+        class="navbar"
+        fixed-top
+        transparent="false"
+        type="is-light">
             <template slot="brand" v-if="logo">
                 <b-navbar-item tag="router-link" :to="{ path: '/' }">
                 <img src="" alt="FlatTrack logo - topbar">
@@ -54,5 +58,7 @@ export default {
 </script>
 
 <style scoped>
-
+.navbar {
+    box-shadow: 5px 0 13px 3px rgba(10,10,10,.1);
+}
 </style>

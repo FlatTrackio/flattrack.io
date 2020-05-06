@@ -23,40 +23,33 @@ package main
 
 import (
 	"log"
-	"net/http"
-	"time"
 
+	"github.com/joho/godotenv"
 	"gitlab.com/flattrack/flattrack.io/src/backend/common"
+	"gitlab.com/flattrack/flattrack.io/src/backend/database"
+	"gitlab.com/flattrack/flattrack.io/src/backend/migrations"
 	"gitlab.com/flattrack/flattrack.io/src/backend/routes"
-	"github.com/ddo/go-vue-handler"
-	"github.com/gorilla/mux"
 )
 
-func handleWebserver() {
-	// manage starting of webserver
-	port := common.GetAppPort()
-	router := mux.NewRouter().StrictSlash(true)
-	router.HandleFunc("/api", routes.APIroot).Methods("GET")
-	router.HandleFunc("/api/interested", routes.APIinterested).Methods("POST")
-	router.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "./dist/robots.txt")
-	})
-	router.HandleFunc("/api/{.*}", routes.APIUnknownEndpoint)
-	router.PathPrefix("/").Handler(vue.Handler("./dist/")).Methods("GET")
-	router.Use(common.Logging)
-	srv := &http.Server{
-		Handler:      router,
-		Addr:         port,
-		WriteTimeout: 15 * time.Second,
-		ReadTimeout:  15 * time.Second,
+func main() {
+	log.Printf("launching FlatTrackio (%v, %v, %v, %v)\n", common.GetAppBuildVersion(), common.GetAppBuildHash(), common.GetAppBuildDate(), common.GetAppBuildMode())
+
+	_ = godotenv.Load(".env")
+
+	dbUsername := common.GetDBusername()
+	dbPassword := common.GetDBpassword()
+	dbHostname := common.GetDBhost()
+	dbDatabase := common.GetDBdatabase()
+	db, err := database.DB(dbUsername, dbPassword, dbHostname, dbDatabase)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	err = migrations.Migrate(db)
+	if err != nil {
+		log.Println(err)
+		return
 	}
 
-	log.Println("Listening on", port)
-	log.Fatal(srv.ListenAndServe())
-}
-
-func main() {
-	// initialise the app
-	common.InitJSONstore("")
-	handleWebserver()
+	routes.HandleWebserver(db)
 }

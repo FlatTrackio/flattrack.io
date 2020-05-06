@@ -21,6 +21,10 @@
 
 package types
 
+import (
+	"net/http"
+)
+
 type JSONResponseMetadata struct {
 	URL       string `json:"selfLink"`
 	Version   string `json:"version"`
@@ -33,14 +37,24 @@ type JSONMessageResponse struct {
 	Spec     interface{}          `json:"spec"`
 }
 
-// how deployment/interested.json should be formatted
+type InterestedSpec struct {
+	Email string `json:"email"`
+}
+
 type EmailStore struct {
 	Emails []string `json:"emails"`
 }
 
 type PackageJSON struct {
-	Name string `json:"name"`
-	Version string `json:"version"`
+	Name        string `json:"name"`
+	Version     string `json:"version"`
 	Description string `json:"description"`
 }
 
+// Endpoints
+// all API endpoints stored in an array
+type Endpoints []struct {
+	EndpointPath string
+	HandlerFunc  http.HandlerFunc
+	HttpMethod   string
+}

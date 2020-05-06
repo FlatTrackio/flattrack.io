@@ -13,17 +13,17 @@
 </template>
 
 <script>
-import axios from 'axios'
+import apiroot from '@/frontend/requests/public/apiroot'
 
 export default {
   name: 'footer',
   data () {
     return {
-      flattrackioVersion: ''
+      flattrackioVersion: '0.0.0'
     }
   },
-  created () {
-    axios.get('/api').then(resp => {
+  beforeMount () {
+    apiroot.GetAPIroot().then(resp => {
       this.flattrackioVersion = resp.data.metadata.version
     })
   }

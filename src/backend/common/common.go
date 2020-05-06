@@ -22,35 +22,100 @@
 package common
 
 import (
-	"encoding/json"
-	"gitlab.com/flattrack/flattrack.io/src/backend/types"
 	"fmt"
-	"io/ioutil"
-	"log"
-	"net/http"
 	"os"
-	"time"
-	"path/filepath"
+	"regexp"
 )
 
 var (
-	currentWorkingDirectory, _ = os.Getwd()
-	deploymentInterestedJSON = fmt.Sprintf("%v/%v/%v", currentWorkingDirectory, "deployment", "interested.json")
-	packageJSON = LoadPackageJSON()
-	appVersion = packageJSON.Version
+	APP_BUILD_VERSION      = "0.0.0"
+	APP_BUILD_HASH         = "???"
+	APP_BUILD_DATE         = "???"
+	APP_BUILD_MODE         = "development"
+	APP_DB_MIGRATIONS_PATH = "/app/migrations"
 )
 
-func GetAppPort() (output string) {
-	// determine the port for the app to run on
-	output = os.Getenv("APP_PORT")
+// GetEnvOrDefault
+// given the value of an environment variable, return it's data or if not available a default value
+func GetEnvOrDefault(envName string, defaultValue string) (output string) {
+	output = os.Getenv(envName)
 	if output == "" {
-		output = ":8080"
+		output = defaultValue
 	}
 	return output
 }
 
-func Find(slice []string, val string) (int, bool) {
-	// determine if string is in string array
+// GetDBdatabase
+// return the database's database to use
+func GetDBdatabase() (output string) {
+	return GetEnvOrDefault("APP_DB_DATABASE", "flattrackio")
+}
+
+// GetDBusername
+// return the database user to use
+func GetDBusername() (output string) {
+	return GetEnvOrDefault("APP_DB_USERNAME", "postgres")
+}
+
+// GetDBhost
+// return the database host to use
+func GetDBhost() (output string) {
+	return GetEnvOrDefault("APP_DB_HOST", "localhost")
+}
+
+// GetDBpassword
+// return the database password to use
+func GetDBpassword() (output string) {
+	return GetEnvOrDefault("APP_DB_PASSWORD", "postgres")
+}
+
+// GetMigrationsPath
+// return the path of the database migrations to use
+func GetMigrationsPath() (output string) {
+	envSet := GetEnvOrDefault("APP_DB_MIGRATIONS_PATH", "")
+	if envSet != "" {
+		return envSet
+	}
+	if APP_BUILD_MODE == "production" {
+		return "/app/migrations"
+	}
+	pwd, _ := os.Getwd()
+	return fmt.Sprintf("%v/migrations", pwd)
+}
+
+// GetAppPort
+// return the port which the app should serve HTTP on
+func GetAppPort() (output string) {
+	return GetEnvOrDefault("APP_PORT", ":8080")
+}
+
+// GetAppBuildVersion
+// return the version of the current FlatTrack instance
+func GetAppBuildVersion() string {
+	return APP_BUILD_VERSION
+}
+
+// GetAppBuildHash
+// return the commit which the current FlatTrack binary was built from
+func GetAppBuildHash() string {
+	return APP_BUILD_HASH
+}
+
+// GetAppBuildDate
+// return the build date of FlatTrack
+func GetAppBuildDate() string {
+	return APP_BUILD_DATE
+}
+
+// GetAppBuildMode
+// return the mode that the app is built in
+func GetAppBuildMode() string {
+	return APP_BUILD_MODE
+}
+
+// FindStringInArray
+// determine if string is in string array
+func FindStringInArray(slice []string, val string) (int, bool) {
 	for i, item := range slice {
 		if item == val {
 			return i, true
@@ -59,108 +124,19 @@ func Find(slice []string, val string) (int, bool) {
 	return -1, false
 }
 
-func LoadPackageJSON() (output types.PackageJSON) {
-	// return contents of package.json
-	packageJSON, err := os.Open("package.json")
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	defer packageJSON.Close()
-	packageJSONFileContents, _ := ioutil.ReadAll(packageJSON)
-	json.Unmarshal([]byte(string(packageJSONFileContents)), &output)
-	return output
+// RegexMatchEmail
+// regex check for valid email address string
+// must also be <= 70
+func RegexMatchEmail(email string) bool {
+	re := regexp.MustCompile("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+	return re.MatchString(email) && len(email) <= 70 && email != ""
 }
 
-func JSONstoreExists() (exists bool) {
-	// determine if deployment/interested.json exists / the app has been initialised
-	if _, err := os.Stat(deploymentInterestedJSON); err == nil {
-		exists = true
-	} else {
-		exists = false
+// SetFirstOrSecond
+// given first, return it, else return second
+func SetFirstOrSecond(first string, second string) string {
+	if first != "" {
+		return first
 	}
-	return exists
-}
-
-func InitJSONstore(altConfig string) (completed bool) {
-	// create deployment/interested.json
-	emptyJSONstore := types.EmailStore{}
-	filePath := altConfig
-	if altConfig == "" {
-		filePath = deploymentInterestedJSON
-	}
-	if !JSONstoreExists() {
-		log.Println("Creating json store")
-		err := os.MkdirAll(filepath.Dir(filePath), os.ModePerm)
-		if err == nil {
-			completed = WriteJSONstore(emptyJSONstore)
-		} else {
-			fmt.Println("Initialisation error:", err)
-			os.Exit(1)
-		}
-	}
-	return completed
-}
-
-func DeinitJSONstore(altConfig string) (completed bool) {
-	// remove deployment/interested.json (used for tests)
-	filePath := altConfig
-	if altConfig == "" {
-		filePath = deploymentInterestedJSON
-	}
-	err := os.Remove(filePath)
-	completed = true
-	if err != nil {
-		completed = false
-	}
-	return completed
-}
-
-func ReadJSONstore(altConfig string) (output types.EmailStore) {
-	// read contents of deployment/interested.json
-	var filePath string
-	filePath = altConfig
-	if altConfig == "" {
-		filePath = deploymentInterestedJSON
-	}
-	emailStore, err := os.Open(filePath)
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	defer emailStore.Close()
-	emailStoreFileContents, _ := ioutil.ReadAll(emailStore)
-	json.Unmarshal([]byte(string(emailStoreFileContents)), &output)
-	return output
-}
-
-func WriteJSONstore(content types.EmailStore) (completed bool) {
-	// write data to deployment/interested.json
-	contentAsJSONString, _ := json.Marshal(content)
-	err := ioutil.WriteFile(deploymentInterestedJSON, []byte(contentAsJSONString), 0644)
-	if err == nil {
-		completed = true
-	}
-	return completed
-}
-
-func JSONResponse(r *http.Request, w http.ResponseWriter, code int, output types.JSONMessageResponse) {
-	// send a JSON response
-	output.Metadata.URL = r.RequestURI
-	output.Metadata.URL = r.RequestURI
-	output.Metadata.Timestamp = time.Now().Unix()
-	output.Metadata.Version = appVersion
-	response, _ := json.Marshal(output)
-	//w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(code)
-	w.Write(response)
-}
-
-func Logging(next http.Handler) http.Handler {
-	// log all requests
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// Do stuff here
-		log.Printf("%v %v %v %v %v %v", r.Header["User-Agent"], r.Method, r.URL, r.Proto, r.Response, r.RemoteAddr)
-		// Call the next handler, which can be another middleware in the chain, or the final handler.
-		next.ServeHTTP(w, r)
-	})
+	return second
 }

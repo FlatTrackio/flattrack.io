@@ -10,13 +10,13 @@
               FlatTrack
             </h1>
             <h2 class="subtitle is-3">
-              Keep track of your flat or community house
+              Collaborate with your flatmates
             </h2>
           </div>
         </div>
       </div>
     </section>
-    <div>
+    <div :class="deviceIsMobile ? 'has-text-centered' : ''">
       <section class="hero is-light is-bold">
         <div class="hero-body">
           <div class="container">
@@ -31,34 +31,21 @@
         </div>
       </section>
     </div>
-    <div>
-      <section class="hero is-dark is-small">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title is-1">Herd cats no longer!</h1>
-            <p class="subtitle is-4">Hand the reminders over to us.</p>
-            <img src="" alt="herding cats" v-if="logo">
-          </div>
-        </div>
-      </section>
-    </div>
-    <div>
+    <div :class="deviceIsMobile ? 'has-text-centered' : ''">
       <section class="hero is-small is-bold">
         <div class="hero-body">
           <div class="container">
             <h1 class="title is-1">The Goal of FlatTrack</h1>
-            <br>
-            <p class="subtitle is-4">We aim to</p>
             <div class="content">
               <dl class="is-large">
                 <li>
-                  make it easier to manage common things in a flat
+                  to make it easier to manage common things in a flat
                 </li>
                 <li>
-                  provide features which bring a flat into collaboration
+                  to provide features which bring a flat into collaboration
                 </li>
                 <li>
-                  have a stream-lined non-techical Free and Open Source solution to organising a flat
+                  to have a stream-lined non-techical Free and Open Source solution for flat collaboration
                 </li>
               </dl>
             </div>
@@ -66,7 +53,7 @@
         </div>
       </section>
     </div>
-    <div>
+    <div :class="deviceIsMobile ? 'has-text-centered' : ''">
       <section class="hero is-primary is-small is-bold">
         <div class="hero-body">
           <div class="container">
@@ -82,13 +69,23 @@
                 <br>
                 Contributors welcome!
               </p>
-              <b-button type="is-primary" inverted outlined tag="a" target="_blank" href="https://simple.wikipedia.org/wiki/Free_and_open-source_software">What's FOSS?</b-button>
+              <b-button
+                type="is-primary"
+                inverted
+                outlined
+                icon-left="help"
+                tag="a"
+                target="_blank"
+                size="is-medium"
+                href="https://simple.wikipedia.org/wiki/Free_and_open-source_software">
+                What's FOSS?
+              </b-button>
             </div>
           </div>
         </div>
       </section>
     </div>
-    <div>
+    <div :class="deviceIsMobile ? 'has-text-centered' : ''">
       <section class="hero is-warning is-small">
         <div class="hero-body">
           <div class="container">
@@ -116,12 +113,20 @@
 </template>
 
 <script>
+import common from '@/frontend/common/common'
+
 export default {
   name: 'home',
   data () {
     return {
       logo: false,
-      accountButtons: false
+      accountButtons: false,
+      deviceIsMobile: false
+    }
+  },
+  methods: {
+    CheckDeviceIsMobile () {
+      this.deviceIsMobile = common.DeviceIsMobile()
     }
   },
   components: {
@@ -129,6 +134,10 @@ export default {
     features: () => import('@/frontend/components/features'),
     interested: () => import('@/frontend/components/interested'),
     ftfooter: () => import('@/frontend/components/footer')
+  },
+  async beforeMount () {
+    this.CheckDeviceIsMobile()
+    window.addEventListener('resize', this.CheckDeviceIsMobile, true)
   }
 }
 </script>

@@ -13,6 +13,8 @@ export default {
 <style lang="scss">
 @import "~bulma/sass/utilities/_all";
 
+@import '~@mdi/font/css/materialdesignicons.min.css';
+
 $primary: #00a7d6;
 $primary-invert: findColorInvert($primary);
 

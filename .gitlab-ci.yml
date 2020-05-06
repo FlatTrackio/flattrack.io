@@ -5,20 +5,103 @@ stages:
 include:
   template: Dependency-Scanning.gitlab-ci.yml
 
-test:
-  image: golang:1.13.4-buster
+cache:
+  key: shared-cache
+  paths:
+    - .npm
+    - /go
+
+test_backend_e2e:
   stage: test
+  image: golang:1.13.10-alpine3.11
+  variables:
+    APP_DB_HOST: postgres
+    CGO_ENABLED: "0"
+  services:
+    - postgres:12.2-alpine
   before_script:
-    - go get -v -d ./...
-    - go install ./...
-    - go get -v github.com/onsi/ginkgo/ginkgo
-    - go get -v github.com/onsi/gomega/...
-    - go run src/backend/main.go &
+    - apk add git gcc
+    - go get github.com/onsi/ginkgo/ginkgo
+    - go get github.com/onsi/gomega/...
+    - go build -o flattrackio src/backend/main.go
+    - ./flattrackio &
   script:
-    - $GOPATH/bin/ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --progress ./test
+    - ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --progress test/backend/e2e
+
+variables:
+  ARCH_DEFAULT: "amd64"
+  APP_BUILD_VERSION: 0.0.0
+  APP_BUILD_MODE: development
+  POSTGRES_DB: flattrackio
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+
+.docker-build-pre-script: &docker-build-pre-script |
+  set -x
+  if ! docker info &>/dev/null; then
+    if [ -z "$DOCKER_HOST" -a "$KUBERNETES_PORT" ]; then
+      export DOCKER_HOST='tcp://localhost:2375'
+    fi
+  fi
+  mkdir -p $HOME/.docker/cli-plugins
+  wget -O $HOME/.docker/cli-plugins/docker-buildx https://github.com/docker/buildx/releases/download/v0.3.1/buildx-v0.3.1.linux-amd64
+  chmod +x $HOME/.docker/cli-plugins/docker-buildx 
+  docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+  docker buildx create --use --name builder
+  docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  apk add git
+
+.docker-pre-build-release-version: &docker-pre-build-release-version |
+  export APP_BUILD_VERSION="$CI_COMMIT_TAG"
+  export APP_BUILD_MODE=production
+  export DOCKER_EXTRA_DESTINATION="-t $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG$PRINT_ARCH"
+
+.docker-build-taggable-name: &docker-build-taggable-name |
+  set -x
+  ARCH_TAGGABLE_NAME="$(echo $ARCH | sed -e 's,/,,g')"
+  if [[ ! "$ARCH" = "$ARCH_DEFAULT" ]]; then
+    PRINT_ARCH="-$ARCH_TAGGABLE_NAME"
+  fi
+
+.docker-build: &docker-build |
+  docker buildx build --build-arg APP_BUILD_VERSION="$APP_BUILD_VERSION" --build-arg APP_BUILD_DATE="$(date -u +%Y-%m-%d_%I:%M:%S%p)" --build-arg APP_BUILD_HASH="$(git rev-parse --short HEAD)" --build-arg APP_BUILD_MODE="$APP_BUILD_MODE" --platform linux/$ARCH -f $CI_PROJECT_DIR/Dockerfile --push -t $CI_REGISTRY_IMAGE:latest$PRINT_ARCH $DOCKER_EXTRA_DESTINATION $CI_PROJECT_DIR
+
+build-amd64:
+  stage: build
+  image: docker:stable
+  services:
+    - docker:stable-dind
+  variables:
+    ARCH: "amd64"
+    DOCKER_HOST: tcp://docker:2375/
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+  before_script:
+    - *docker-build-pre-script
+  script:
+    - *docker-build-taggable-name
+    - *docker-build
+  except:
+    - tags
+
+build-amd64-release:
+  stage: build
+  image: docker:stable
+  services:
+    - docker:stable-dind
+  variables:
+    ARCH: "amd64"
+    DOCKER_HOST: tcp://docker:2375/
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+  before_script:
+    - *docker-build-pre-script
+  script:
+    - *docker-build-taggable-name
+    - *docker-pre-build-release-version
+    - *docker-build
   only:
-    changes:
-      - src/**/*
+    - tags
 
 build:
   stage: build
