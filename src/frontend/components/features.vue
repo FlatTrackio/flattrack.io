@@ -48,7 +48,7 @@ export default {
           name: 'Tasks',
           icon: 'clipboard-list',
           shortDescription: 'Sort what needs to be done',
-          description: 'Tasks are assigned and rotated either never, daily, weekly, or monthly. Email reminders are sent out. When tasks are completed, they are to be marked as such.'
+          description: 'Add your daily, weekly, and monthly tasks for your flat. Receive notifications for when you need them done. Automatically rotate between your flatmates.'
         },
         {
           name: 'Board',

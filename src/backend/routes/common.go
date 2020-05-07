@@ -11,6 +11,7 @@ import (
 	"encoding/json"
 	"gitlab.com/flattrack/flattrack.io/src/backend/common"
 	"gitlab.com/flattrack/flattrack.io/src/backend/types"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"log"
 	"net/http"
 	"time"
@@ -45,6 +46,11 @@ func JSONResponse(r *http.Request, w http.ResponseWriter, code int, output types
 // HandleWebserver
 // manage starting of webserver
 func HandleWebserver(db *sql.DB) {
+	go func() {
+		http.Handle("/metrics", promhttp.Handler())
+		log.Println("Metrics listening on :2112")
+		http.ListenAndServe(":2112", nil)
+	}()
 	port := common.GetAppPort()
 	router := mux.NewRouter().StrictSlash(true)
 	apiEndpointPrefix := "/api"
