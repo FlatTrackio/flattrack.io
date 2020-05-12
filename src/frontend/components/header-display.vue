@@ -6,23 +6,9 @@
           FlatTrack.io
         </p>
         <p class="subtitle">
-          Keep track of your flat or community house
+          Collaborate with your flatmates
         </p>
       </div>
     </section>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'header-display',
-  data () {
-    return {
-    }
-  }
-}
-</script>
-
-<style scoped>
-
-</style>

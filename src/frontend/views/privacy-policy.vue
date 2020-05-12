@@ -20,42 +20,181 @@
             Security (state how any data that is collected is stored/protected)
             Redress (what customer can do if privacy policy is not met)
         -->
-        <h1 class="title is-3"> What information do we collect? </h1>
-        <p class="subtitle is-4"> Email addresses per submission. </p>
-        <br>
-
-        <h1 class="title is-3"> Is the collection of data opt-in or opt-out? </h1>
-        <p class="subtitle is-4"> Opt-in only. Email addresses are only inputted and not collected without consent. </p>
-        <br>
-
-        <h1 class="title is-3"> What will this information be used for? </h1>
-        <p class="subtitle is-4"> Sending email notifications once FlatTrack is ready. </p>
-        <br>
-
-        <h1 class="title is-3"> Does this site have embedded trackers? </h1>
-        <p class="subtitle is-4"> We do not use trackers of any kind. </p>
-        <br>
-
-        <h1 class="title is-3"> Do we use 'cookies'? </h1>
-        <p class="subtitle is-4"> Cookies are small text files stored in the browser. We do not store any cookies. </p>
-        <br>
-
-        <h1 class="title is-3"> Do we share data to third-parties? </h1>
-        <p class="subtitle is-4"> No. We do not sell, trade, or transfer any kind of data to any external entities. </p>
-        <br>
-
-        <h1 class="title is-3"> How is my data protected? </h1>
-        <p class="subtitle is-4"> Any data communicated to or from the site is encrypted using Secure Socket Layer (SSL) technology. <br>
-            Access to the site is limited, disallowing access to storage.
-        </p>
-        <br>
-
-        <h1 class="title is-3"> How do I unsubscribe? </h1>
-        <p class="subtitle is-4"> Please do not hesitate to contact us via email, for removing your email address from the notify list. </p>
-        <br>
-
-        <h1 class="title is-3"> What is there to do if I believe our Privacy Policy has been breached? </h1>
-        <p class="subtitle is-4"> Please do not hesitate to contact us via email, we will assist you. </p>
+        <div class="container">
+          <div class="card">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <b-icon
+                    size="is-medium"
+                    icon="database"/>
+                </div>
+                <div class="media-context">
+                  <p class="subtitle is-3">
+                    What information do we collect?
+                  </p>
+                  <p class="title">
+                    Email addresses per submission.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <b-icon
+                    size="is-medium"
+                    icon="pipe"/>
+                </div>
+                <div class="media-context">
+                  <p class="subtitle is-3">
+                    Is the collection of data opt-in or opt-out?
+                  </p>
+                  <p class="title">
+                    Opt-in only. Email addresses are only inputted and not collected without consent.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <b-icon
+                    size="is-medium"
+                    icon="account-arrow-right"/>
+                </div>
+                <div class="media-context">
+                  <p class="subtitle is-3">
+                    What will this information be used for?
+                  </p>
+                  <p class="title">
+                    Sending email notifications once FlatTrack is ready.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <b-icon
+                    size="is-medium"
+                    icon="bug"/>
+                </div>
+                <div class="media-context">
+                  <p class="subtitle is-3">
+                    Does this site have embedded trackers?
+                  </p>
+                  <p class="title">
+                    We do not use trackers of any kind.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <b-icon
+                    size="is-medium"
+                    icon="cookie"/>
+                </div>
+                <div class="media-context">
+                  <p class="subtitle is-3">
+                    Do we use 'cookies'?
+                  </p>
+                  <p class="title">
+                    Cookies are small text files stored in the browser. We do not store any cookies.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <b-icon
+                    size="is-medium"
+                    icon="share-off"/>
+                </div>
+                <div class="media-context">
+                  <p class="subtitle is-3">
+                    Do we share data to third-parties?
+                  </p>
+                  <p class="title">
+                    No. We do not sell, trade, or transfer any kind of data to any external entities.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <b-icon
+                    size="is-medium"
+                    icon="share-off"/>
+                </div>
+                <div class="media-context">
+                  <p class="subtitle is-3">
+                    How is my data protected?
+                  </p>
+                  <p class="title">
+                    Any data communicated to or from the site is encrypted using Secure Socket Layer (SSL) technology in transport. <br/>
+                    Once transported, data is volume-level encrypted by the cloud-provider <br/>
+                    Access to the site is limited, disallowing access to storage.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <b-icon
+                    size="is-medium"
+                    icon="email-off"/>
+                </div>
+                <div class="media-context">
+                  <p class="subtitle is-3">
+                    How do I unsubscribe?
+                  </p>
+                  <p class="title">
+                    Please do not hesitate to contact us via email, for removing your email address from the notify list.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <b-icon
+                    size="is-medium"
+                    icon="alert"/>
+                </div>
+                <div class="media-context">
+                  <p class="subtitle is-3">
+                    What is there to do if I believe our Privacy Policy has been breached?
+                  </p>
+                  <p class="title">
+                    Please do not hesitate to contact us via email, we will assist you.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
     <ftfooter/>

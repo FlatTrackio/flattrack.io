@@ -23,12 +23,21 @@
     <div class="container">
       <div class="card">
         <div class="card-content">
-        <p class="subtitle is-3">
-            Hold tight there.
-        </p>
-        <p class="title">
-            We're still getting things ready, we'll update this soon.
-        </p>
+          <div class="media">
+            <div class="media-left">
+              <b-icon
+                size="is-medium"
+                icon="chat-sleep"/>
+            </div>
+            <div class="media-context">
+              <p class="subtitle is-3">
+                Hold tight there.
+              </p>
+              <p class="title">
+                We're still getting things ready, we'll update this soon.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
         <!--

@@ -26,8 +26,11 @@
             <h2 class="subtitle is-4">
               What FlatTrack will do
             </h2>
+            <features/>
+            <p class="subtitle is-6">
+              Note: features are subject to change
+            </p>
           </div>
-          <features/>
         </div>
       </section>
     </div>

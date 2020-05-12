@@ -23,11 +23,16 @@ export default {
   methods: {
     PostInterested: () => {
       Dialog.prompt({
-        message: `Enter your email, so we can notify you when the first version is ready and when we are ready. <br><br> Note: By submitting your email address, you agree to FlatTrack's privacy policy.`,
+        title: 'Ready notification',
+        hasIcon: true,
+        icon: 'email',
+        type: 'is-primary',
+        message: 'If you would like to be notified when FlatTrack is generally available, submit below and you will be notified. <br><br> Note: By submitting your email address, you agree to the FlatTrack privacy policy.',
         inputAttrs: {
-          placeholder: 'xxxxxx@xxxxxxx.xxx',
+          placeholder: 'Enter you email address',
           maxlength: 70,
-          type: 'email'
+          type: 'email',
+          icon: 'email'
         },
         onConfirm: (value) => {
           interested.PostInterested(value).then(resp => {

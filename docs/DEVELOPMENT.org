@@ -1,0 +1,43 @@
+#+TITLE: FlatTrack.io development
+#+AUTHOR: Caleb Woodbine <calebwoodbine.public@gmail.com>
+
+* Development
+In-cluster local development is recommended, use [[https://minikube.sigs.k8s.io][minikube]] or [[https://kind.sigs.k8s.io/][kind]].
+
+** Bring up the deployments
+   #+begin_src shell
+   kubectl apply -k k8s-manifests/development/postgres
+   #+end_src
+   
+** Port-forward the database connection   
+   #+begin_src shell
+   kubectl -n flattrackio-site-dev port-forward service/postgres 5432:5432
+   #+end_src
+
+** Quick development patterns
+*** Backend
+    #+begin_src shell
+    go build -o flattrackio src/backend/main.go && ./flattrackio
+    #+end_src
+*** Frontend
+    #+begin_src shell
+    npm run build:frontend
+    #+end_src
+
+** Auto build and launch with [[https://tilt.dev][Tilt]]
+   #+begin_src shell
+     eval $(minikube -p minikube docker-env)
+     tilt up --host 0.0.0.0
+   #+end_src
+
+* Additional
+** Manually connecting to the Postgres database
+   #+begin_src shell
+   kubectl -n flattrackio-site-dev exec -it postgres-0 -- psql
+   #+end_src
+
+** Remove migrations   
+   #+begin_src shell
+   gomigrate -source "file://$(pwd)/migrations" -database postgres://postgres:postgres@localhost/flattrackio?sslmode=disable down
+   #+end_src
+

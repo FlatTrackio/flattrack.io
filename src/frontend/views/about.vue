@@ -23,42 +23,78 @@
       <div class="container">
         <div class="card">
           <div class="card-content">
-            <p class="subtitle is-3">
-              Who are we?
-            </p>
-            <p class="title">
-              A Free and Open Source development company, started in 2019.
-            </p>
+            <div class="media">
+              <div class="media-left">
+                <b-icon
+                  size="is-medium"
+                  icon="account-group"/>
+              </div>
+              <div class="media-context">
+                <p class="subtitle is-3">
+                  Who are we?
+                </p>
+                <p class="title">
+                  A Free and Open Source development company, started in 2019.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="card">
           <div class="card-content">
-            <p class="subtitle is-3">
-              Located in
-            </p>
-            <p class="title">
-              Tauranga, New Zealand.
-            </p>
+            <div class="media">
+              <div class="media-left">
+                <b-icon
+                  size="is-medium"
+                  icon="map-marker"/>
+              </div>
+              <div class="media-context">
+                <p class="subtitle is-3">
+                  Located in
+                </p>
+                <p class="title">
+                  Tauranga, New Zealand.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="card">
           <div class="card-content">
-            <p class="subtitle is-3">
-              Developed on
-            </p>
-            <p class="title">
-              <a href="https://gitlab.com/flattrack">GitLab</a>.
-            </p>
+            <div class="media">
+              <div class="media-left">
+                <b-icon
+                  size="is-medium"
+                  icon="code-braces"/>
+              </div>
+              <div class="media-context">
+                <p class="subtitle is-3">
+                  Developed on
+                </p>
+                <p class="title">
+                  <a target="_blank" href="https://gitlab.com/flattrack">GitLab</a>.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="card">
           <div class="card-content">
-            <p class="subtitle is-3">
-              Contact found
-            </p>
-            <p class="title">
-              <a href="/contact">Here</a>.
-            </p>
+            <div class="media">
+              <div class="media-left">
+                <b-icon
+                  size="is-medium"
+                  icon="email"/>
+              </div>
+              <div class="media-context">
+                <p class="subtitle is-3">
+                  Contact found
+                </p>
+                <p class="title">
+                  <router-link to="/contact">Here</router-link>.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

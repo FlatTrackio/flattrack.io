@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container">
-            <section class="section">
+            <section class="section is-paddingless">
               <div v-for="feature in features" v-bind:key="feature">
                 <div class="card pointer-cursor-on-hover">
                   <div class="card-content">
