@@ -6,8 +6,8 @@
       <section class="section">
         <nav class="breadcrumb is-medium has-arrow-separator" aria-label="breadcrumbs">
           <ul>
-            <li><a href="/"> Home </a></li>
-            <li class="is-active"><a href="/privacy-policy"> Privacy Policy </a></li>
+            <li><router-link to="/"> Home </router-link></li>
+            <li class="is-active"><router-link to="/privacy-policy"> Privacy Policy </router-link></li>
           </ul>
         </nav>
         <h1 class="title is-1"> Privacy Policy </h1>

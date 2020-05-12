@@ -38,16 +38,16 @@
       <section class="hero is-small is-bold">
         <div class="hero-body">
           <div class="container">
-            <h1 class="title is-1">The Goal of FlatTrack</h1>
+            <h1 class="title is-1">The Goals of FlatTrack</h1>
             <div class="content">
               <dl class="is-large">
-                <li>
+                <li class="subtitle is-5">
                   to make it easier to manage common things in a flat
                 </li>
-                <li>
+                <li class="subtitle is-5">
                   to provide features which bring a flat into collaboration
                 </li>
-                <li>
+                <li class="subtitle is-5">
                   to have a stream-lined non-techical Free and Open Source solution for flat collaboration
                 </li>
               </dl>
@@ -68,7 +68,7 @@
               <p class="subtitle is-4">
                 Built for the Community by the Community.
                 <br><br>
-                FlatTrack's source code will be Freely available, licensed under <a href="https://www.gnu.org/licenses/agpl-3.0.en.html" target="_blank">AGPL-3.0.</a>
+                FlatTrack's source code will be Freely available, licensed under <span style="text-decoration: underline dotted;"><a href="https://www.gnu.org/licenses/agpl-3.0.en.html" target="_blank">AGPL-3.0.</a></span>
                 <br>
                 Contributors welcome!
               </p>

@@ -23,10 +23,10 @@
                     Blog
                 </b-navbar-item>
                 <b-navbar-dropdown label="Info">
-                    <b-navbar-item href="/about">
+                    <b-navbar-item tag="router-link" to="/about">
                         About
                     </b-navbar-item>
-                    <b-navbar-item href="/contact">
+                    <b-navbar-item tag="router-link" to="/contact">
                         Contact
                     </b-navbar-item>
                 </b-navbar-dropdown>
@@ -34,10 +34,10 @@
             <template slot="end" v-if="accountButtons">
                 <b-navbar-item tag="div">
                 <div class="buttons">
-                    <b-button type="is-primary" tag="a" href="https://live.flattrack.io/signup">
+                    <b-button type="is-primary" tag="a" href="https://app.flattrack.io/signup">
                         <strong>Sign up</strong>
                     </b-button>
-                    <b-button type="is-light" tag="a" href="https://live.flattrack.io/login">
+                    <b-button type="is-light" tag="a" href="https://app.flattrack.io/login">
                         Log in
                     </b-button>
                 </div>

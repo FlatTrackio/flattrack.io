@@ -7,8 +7,8 @@
         <div class="container">
           <nav class="breadcrumb is-medium has-arrow-separator" aria-label="breadcrumbs">
             <ul>
-              <li><a href="/">Home</a></li>
-              <li class="is-active"><a href="/about">Contact</a></li>
+              <li><router-link to="/">Home</router-link></li>
+              <li class="is-active"><router-link to="/about">Contact</router-link></li>
             </ul>
           </nav>
           <h1 class="title is-1">
