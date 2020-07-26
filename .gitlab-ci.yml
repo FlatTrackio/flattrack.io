@@ -12,6 +12,14 @@ cache:
     - .npm
     - /go
 
+variables:
+  ARCH_DEFAULT: "amd64"
+  APP_BUILD_VERSION: 0.0.0
+  APP_BUILD_MODE: development
+  POSTGRES_DB: flattrackio
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+
 test_backend_e2e:
   stage: test
   image: golang:1.13.10-alpine3.11
@@ -29,14 +37,6 @@ test_backend_e2e:
   script:
     - ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --progress test/backend/e2e
 
-variables:
-  ARCH_DEFAULT: "amd64"
-  APP_BUILD_VERSION: 0.0.0
-  APP_BUILD_MODE: development
-  POSTGRES_DB: flattrackio
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
-
 .docker-build-pre-script: &docker-build-pre-script |
   set -x
   if ! docker info &>/dev/null; then
@@ -53,12 +53,17 @@ variables:
   apk add git
 
 .docker-pre-build-release-version: &docker-pre-build-release-version |
-  export APP_BUILD_VERSION="$CI_COMMIT_TAG"
-  export APP_BUILD_MODE=production
-  export DOCKER_EXTRA_DESTINATION="-t $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG$PRINT_ARCH"
+  if [[ ! -z "$CI_COMMIT_TAG" ]]; then
+    export APP_BUILD_VERSION="$CI_COMMIT_TAG"
+    export APP_BUILD_MODE=production
+    export DOCKER_EXTRA_DESTINATION="-t $CI_REGISTRY_IMAGE:$APP_BUILD_VERSION$PRINT_ARCH"
+  fi
 
 .docker-build-taggable-name: &docker-build-taggable-name |
   set -x
+  if [[ ! "$CI_COMMIT_BRANCH" = "$CI_DEFAULT_BRANCH" ]] && [[ -z "$CI_COMMIT_TAG" ]]; then
+    BRANCH_NAME="-$CI_COMMIT_BRANCH"
+  fi
   ARCH_TAGGABLE_NAME="$(echo $ARCH | sed -e 's,/,,g')"
   if [[ ! "$ARCH" = "$ARCH_DEFAULT" ]]; then
     PRINT_ARCH="-$ARCH_TAGGABLE_NAME"
@@ -81,28 +86,8 @@ build-amd64:
     - *docker-build-pre-script
   script:
     - *docker-build-taggable-name
-    - *docker-build
-  except:
-    - tags
-
-build-amd64-release:
-  stage: build
-  image: docker:stable
-  services:
-    - docker:stable-dind
-  variables:
-    ARCH: "amd64"
-    DOCKER_HOST: tcp://docker:2375/
-    DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: ""
-  before_script:
-    - *docker-build-pre-script
-  script:
-    - *docker-build-taggable-name
     - *docker-pre-build-release-version
     - *docker-build
-  only:
-    - tags
     
 lint_frontend:
   stage: lint
