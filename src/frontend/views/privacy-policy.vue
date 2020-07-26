@@ -30,10 +30,10 @@
                     icon="database"/>
                 </div>
                 <div class="media-context">
-                  <p class="subtitle is-3">
+                  <p class="subtitle is-5">
                     What information do we collect?
                   </p>
-                  <p class="title">
+                  <p class="title is-4">
                     Email addresses per submission.
                   </p>
                 </div>
@@ -49,10 +49,10 @@
                     icon="pipe"/>
                 </div>
                 <div class="media-context">
-                  <p class="subtitle is-3">
+                  <p class="subtitle is-5">
                     Is the collection of data opt-in or opt-out?
                   </p>
-                  <p class="title">
+                  <p class="title is-4">
                     Opt-in only. Email addresses are only inputted and not collected without consent.
                   </p>
                 </div>
@@ -68,10 +68,10 @@
                     icon="account-arrow-right"/>
                 </div>
                 <div class="media-context">
-                  <p class="subtitle is-3">
+                  <p class="subtitle is-5">
                     What will this information be used for?
                   </p>
-                  <p class="title">
+                  <p class="title is-4">
                     Sending email notifications once FlatTrack is ready.
                   </p>
                 </div>
@@ -87,10 +87,10 @@
                     icon="bug"/>
                 </div>
                 <div class="media-context">
-                  <p class="subtitle is-3">
+                  <p class="subtitle is-5">
                     Does this site have embedded trackers?
                   </p>
-                  <p class="title">
+                  <p class="title is-4">
                     We do not use trackers of any kind.
                   </p>
                 </div>
@@ -106,10 +106,10 @@
                     icon="cookie"/>
                 </div>
                 <div class="media-context">
-                  <p class="subtitle is-3">
+                  <p class="subtitle is-5">
                     Do we use 'cookies'?
                   </p>
-                  <p class="title">
+                  <p class="title is-4">
                     Cookies are small text files stored in the browser. We do not store any cookies.
                   </p>
                 </div>
@@ -125,10 +125,10 @@
                     icon="share-off"/>
                 </div>
                 <div class="media-context">
-                  <p class="subtitle is-3">
+                  <p class="subtitle is-5">
                     Do we share data to third-parties?
                   </p>
-                  <p class="title">
+                  <p class="title is-4">
                     No. We do not sell, trade, or transfer any kind of data to any external entities.
                   </p>
                 </div>
@@ -144,10 +144,10 @@
                     icon="share-off"/>
                 </div>
                 <div class="media-context">
-                  <p class="subtitle is-3">
+                  <p class="subtitle is-5">
                     How is my data protected?
                   </p>
-                  <p class="title">
+                  <p class="title is-4">
                     Any data communicated to or from the site is encrypted using Secure Socket Layer (SSL) technology in transport. <br/>
                     Once transported, data is volume-level encrypted by the cloud-provider <br/>
                     Access to the site is limited, disallowing access to storage.
@@ -165,10 +165,10 @@
                     icon="email-off"/>
                 </div>
                 <div class="media-context">
-                  <p class="subtitle is-3">
+                  <p class="subtitle is-5">
                     How do I unsubscribe?
                   </p>
-                  <p class="title">
+                  <p class="title is-4">
                     Please do not hesitate to contact us via email, for removing your email address from the notify list.
                   </p>
                 </div>
@@ -184,10 +184,10 @@
                     icon="alert"/>
                 </div>
                 <div class="media-context">
-                  <p class="subtitle is-3">
+                  <p class="subtitle is-5">
                     What is there to do if I believe our Privacy Policy has been breached?
                   </p>
-                  <p class="title">
+                  <p class="title is-4">
                     Please do not hesitate to contact us via email, we will assist you.
                   </p>
                 </div>

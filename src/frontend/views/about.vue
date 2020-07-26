@@ -30,10 +30,10 @@
                   icon="account-group"/>
               </div>
               <div class="media-context">
-                <p class="subtitle is-3">
+                <p class="subtitle is-5">
                   Who are we?
                 </p>
-                <p class="title">
+                <p class="title is-4">
                   A Free and Open Source development company, started in 2019.
                 </p>
               </div>
@@ -49,10 +49,10 @@
                   icon="map-marker"/>
               </div>
               <div class="media-context">
-                <p class="subtitle is-3">
+                <p class="subtitle is-5">
                   Located in
                 </p>
-                <p class="title">
+                <p class="title is-4">
                   Tauranga, New Zealand.
                 </p>
               </div>
@@ -68,11 +68,11 @@
                   icon="code-braces"/>
               </div>
               <div class="media-context">
-                <p class="subtitle is-3">
+                <p class="subtitle is-5">
                   Developed on
                 </p>
-                <p class="title">
-                  <a target="_blank" href="https://gitlab.com/flattrack">GitLab</a>.
+                <p class="title is-4">
+                  <a target="_blank" href="https://gitlab.com/flattrack" rel="noreferrer">GitLab</a>.
                 </p>
               </div>
             </div>
@@ -87,10 +87,10 @@
                   icon="email"/>
               </div>
               <div class="media-context">
-                <p class="subtitle is-3">
+                <p class="subtitle is-5">
                   Contact found
                 </p>
-                <p class="title">
+                <p class="title is-4">
                   <router-link to="/contact">Here</router-link>.
                 </p>
               </div>
