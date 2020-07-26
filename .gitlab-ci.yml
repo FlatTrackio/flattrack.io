@@ -1,4 +1,5 @@
 stages:
+  - lint
   - test
   - build
 
@@ -102,3 +103,22 @@ build-amd64-release:
     - *docker-build
   only:
     - tags
+    
+lint_frontend:
+  stage: lint
+  image: node:12.10.0-alpine
+  allow_failure: true
+  before_script:
+    - npm i
+  script:
+    - npm run lint
+
+lint_backend:
+  stage: lint
+  image: golang:1.13.10-alpine3.11
+  allow_failure: true
+  before_script:
+    - apk add git gcc
+    - go get -u golang.org/x/lint/golint
+  script:
+    - golint -set_exit_status src/backend/... test/backend/e2e/...
