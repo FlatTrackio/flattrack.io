@@ -68,7 +68,7 @@
               <p class="subtitle is-4">
                 Built for the Community by the Community.
                 <br><br>
-                FlatTrack's source code will be Freely available, licensed under <span style="text-decoration: underline dotted;"><a href="https://www.gnu.org/licenses/agpl-3.0.en.html" target="_blank">AGPL-3.0.</a></span>
+                FlatTrack's source code will be Freely available, licensed under <span style="text-decoration: underline dotted;"><a href="https://www.gnu.org/licenses/agpl-3.0.en.html" target="_blank" rel="noreferrer">AGPL-3.0.</a></span>
                 <br>
                 Contributors welcome!
               </p>
