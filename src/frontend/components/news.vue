@@ -21,7 +21,7 @@
           <div class="content">
             <b-skeleton active v-if="pageLoading"></b-skeleton>
             <p class="subtitle is-5" v-if="!pageLoading">
-              {{ post.contentSnippet }}
+              {{ post.description }}
               <a :href="post.link">Read more</a>
             </p>
             <b-field grouped v-if="!pageLoading">
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import common from '@/frontend/common/common'
+import requests from '@/frontend/requests/public/news'
 
 export default {
   name: 'news',
@@ -60,9 +60,9 @@ export default {
     }
   },
   async beforeMount () {
-    common.GetLatestRSSPost().then(resp => {
+    requests.GetLatestRSSPost().then(resp => {
       console.log({ resp })
-      this.post = resp
+      this.post = resp.data.spec
       this.pageLoading = false
     })
   }

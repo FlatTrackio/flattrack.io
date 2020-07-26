@@ -16,13 +16,14 @@ import (
 	"gitlab.com/flattrack/flattrack.io/src/backend/interested"
 	"gitlab.com/flattrack/flattrack.io/src/backend/types"
 	"gitlab.com/flattrack/flattrack.io/src/backend/health"
+	"gitlab.com/flattrack/flattrack.io/src/backend/feed"
 )
 
 // GetRoot ...
 // root endpoints of the API
 func GetRoot(w http.ResponseWriter, r *http.Request) {
 	// root of api
-	JSONResponse(r, w, 200, types.JSONMessageResponse{
+	JSONResponse(r, w, http.StatusOK, types.JSONMessageResponse{
 		Metadata: types.JSONResponseMetadata{
 			Response: "Welcome to FlatTrack.io",
 		},
@@ -33,7 +34,7 @@ func GetRoot(w http.ResponseWriter, r *http.Request) {
 // submits an email for alerting when FlatTrack is ready later on
 func PostInterested(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		responseCode := 400
+		responseCode := http.StatusInternalServerError
 		responseMessage := "Failed to submit email address as interested"
 
 		var interestedSpec types.InterestedSpec
@@ -42,7 +43,7 @@ func PostInterested(db *sql.DB) http.HandlerFunc {
 
 		responseMessage, err = interested.AddEmailToInterested(db, interestedSpec)
 		if err == nil {
-			responseCode = 200
+			responseCode = http.StatusOK
 		} else {
 			log.Println(err)
 		}
@@ -55,11 +56,31 @@ func PostInterested(db *sql.DB) http.HandlerFunc {
 	}
 }
 
+// GetLatestRSSPost ...
+// responds with the latest blog post,
+func GetLatestRSSPost(w http.ResponseWriter, r *http.Request) {
+	response := "Failed to find latest post"
+	responseCode := http.StatusInternalServerError
+
+	post, err := feed.GetLatestRSSPost()
+	if err == nil {
+		response = "Successfully found the latest post"
+		responseCode = http.StatusOK
+	}
+
+	JSONResponse(r, w, responseCode, types.JSONMessageResponse{
+		Metadata: types.JSONResponseMetadata{
+			Response: response,
+		},
+		Spec: post,
+	})
+}
+
 // UnknownEndpoint ...
 // handle wildcard endpoints
 func UnknownEndpoint(w http.ResponseWriter, r *http.Request) {
 	// unknown endpoint
-	JSONResponse(r, w, 404, types.JSONMessageResponse{
+	JSONResponse(r, w, http.StatusNotFound, types.JSONMessageResponse{
 		Metadata: types.JSONResponseMetadata{
 			Response: "This endpoint doesn't seem to exist.",
 		},

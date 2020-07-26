@@ -3,14 +3,17 @@
     fetch the latest blog posts
 */
 
-import RSSParser from 'rss-parser'
+import Request from '@/frontend/requests/requests'
 
-async function GetFeed () {
-  var parser = new RSSParser()
-  var feed = await parser.parseURL('https://blog.flattrack.io/rss')
-  return feed
+// GetLatestRSSPost
+// returns the latest post
+function GetLatestRSSPost () {
+  return Request({
+    url: '/api/latestPost',
+    method: 'GET'
+  }, false, true)
 }
 
 export default {
-  GetFeed
+  GetLatestRSSPost
 }

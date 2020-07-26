@@ -100,7 +100,7 @@ func GetAppPort() (output string) {
 // GetAppHealthPort ...
 // return the health port which the app should serve on
 func GetAppHealthPort() (output string) {
-	return GetEnvOrDefault("APP_PORT", ":2112")
+	return GetEnvOrDefault("APP_PORT", ":8081")
 }
 
 // GetAppBuildVersion ...
