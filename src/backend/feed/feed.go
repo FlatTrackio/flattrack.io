@@ -13,7 +13,7 @@ import (
 // fetch the feed from FlatTrack's blog
 func GetLatestRSSPost () (*gofeed.Item, error) {
 	fp := gofeed.NewParser()
-	feed, err := fp.ParseURL("https://blog.flattrack.io/rss")
+	feed, err := fp.ParseURL("https://blog.flattrack.io/rss/")
 	latestPost := feed.Items[0]
 	return latestPost, err
 }
