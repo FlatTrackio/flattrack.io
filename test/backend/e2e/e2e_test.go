@@ -76,7 +76,7 @@ var _ = Describe("API interested tests", func() {
 
 			resp, err := httpRequestWithHeader("POST", "http://localhost:8080/api/interested", emailBytes, "")
 			Expect(err).To(BeNil(), "API request should not return error")
-			Expect(resp.StatusCode).To(Equal(200), "Server MUST response with a 200 value status code")
+			Expect(resp.StatusCode).To(Equal(http.StatusOK), "Server MUST response with a 200 value status code")
 		}
         })
 
@@ -101,7 +101,7 @@ var _ = Describe("API interested tests", func() {
 
 			resp, err := httpRequestWithHeader("POST", "http://localhost:8080/api/interested", emailBytes, "")
 			Expect(err).To(BeNil(), "API request should not return error")
-			Expect(resp.StatusCode).To(Equal(400), "Server MUST response with a 400 value status code")
+			Expect(resp.StatusCode).To(Equal(http.StatusBadRequest), "Server MUST response with a 400 value status code")
 		}
 
         })
@@ -115,7 +115,7 @@ var _ = Describe("API interested tests", func() {
 
 		resp, err := httpRequestWithHeader("POST", "http://localhost:8080/api/interested", emailBytes, "")
 		Expect(err).To(BeNil(), "API request should not return error")
-		Expect(resp.StatusCode).To(Equal(400), "Server MUST response with a 400 value status code")
+		Expect(resp.StatusCode).To(Equal(http.StatusBadRequest), "Server MUST response with a 400 value status code")
         })
 
         It("should not allow empty strings", func() {
