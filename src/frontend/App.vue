@@ -43,6 +43,32 @@ $footer-padding: 1rem 1.5rem 1rem;
 
 <style>
 html {
-  scroll-behavior: smooth
+    scroll-behavior: smooth
+}
+
+.pointer-cursor-on-hover {
+    cursor: pointer;
+}
+
+.card {
+    user-select: none;
+    border: 1px dashed rgba(0, 0, 0, .0);
+    transition: box-shadow 0.4s, border 0.2s;
+}
+
+.card:hover {
+    background-color: #fbfbfb;
+    transition: box-shadow 0.4s, background-color 0.3s, border 0.2s;
+    box-shadow: black 0 0px 45px -30px;
+    border: 1px solid darkgray;
+}
+
+.card:active {
+    background-color: #f1f0f0;
+    transition: height 0.1s, width 0.1s, margin 0.1s, box-shadow 0.4s;
+    height: calc(100% - 8px);
+    border: 1px dashed #000000;
+    box-shadow: black 0 0px 66px -27px;
+    top: 1px;
 }
 </style>
