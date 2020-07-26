@@ -19,3 +19,9 @@ func DB(username string, password string, hostname string, database string, sslm
 	connStr := fmt.Sprintf("postgres://%v:%v@%v/%v?sslmode=%v", username, password, hostname, database, sslmode)
 	return sql.Open("postgres", connStr)
 }
+
+// Ping ...
+// ping the database
+func Ping(db *sql.DB) (err error) {
+	return db.Ping()
+}

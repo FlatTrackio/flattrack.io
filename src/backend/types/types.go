@@ -39,6 +39,7 @@ type JSONResponseMetadata struct {
 type JSONMessageResponse struct {
 	Metadata JSONResponseMetadata `json:"metadata"`
 	Spec     interface{}          `json:"spec"`
+	Data     interface{}          `json:"data,omitempty"`
 }
 
 // InterestedSpec ...

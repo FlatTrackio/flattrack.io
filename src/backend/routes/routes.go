@@ -15,6 +15,7 @@ import (
 
 	"gitlab.com/flattrack/flattrack.io/src/backend/interested"
 	"gitlab.com/flattrack/flattrack.io/src/backend/types"
+	"gitlab.com/flattrack/flattrack.io/src/backend/health"
 )
 
 // GetRoot ...
@@ -63,4 +64,26 @@ func UnknownEndpoint(w http.ResponseWriter, r *http.Request) {
 			Response: "This endpoint doesn't seem to exist.",
 		},
 	})
+}
+
+// Healthz ...
+// HTTP handler for health checks
+func Healthz(db *sql.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		response := "App unhealthy"
+		code := http.StatusInternalServerError
+
+		err := health.Healthy(db)
+		if err == nil {
+			response = "App healthy"
+			code = http.StatusOK
+		}
+		JSONresp := types.JSONMessageResponse{
+			Metadata: types.JSONResponseMetadata{
+				Response: response,
+			},
+			Data: err == nil,
+		}
+		JSONResponse(r, w, code, JSONresp)
+	}
 }

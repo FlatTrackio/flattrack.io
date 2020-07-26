@@ -52,5 +52,6 @@ func main() {
 		return
 	}
 
+	go routes.HealthHandler(db)
 	routes.HandleWebserver(db)
 }

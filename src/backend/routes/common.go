@@ -20,6 +20,14 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// HealthHandler ...
+func HealthHandler(db *sql.DB) {
+	port := common.GetAppHealthPort()
+	http.Handle("/_healthz", Healthz(db))
+	log.Printf("Health listening on %v", port)
+	http.ListenAndServe(port, nil)
+}
+
 // Logging ...
 // handler for printing request logs
 func Logging(next http.Handler) http.Handler {
