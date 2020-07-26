@@ -12,7 +12,7 @@
             <b-skeleton active v-if="pageLoading"></b-skeleton>
             <p class="title is-3" v-if="!pageLoading">{{ post.title }}</p>
             <b-skeleton active v-if="pageLoading"></b-skeleton>
-            <p class="subtitle is-5" v-if="!pageLoading">By {{ post.creator }} on {{ post.pubDate }}</p>
+            <p class="subtitle is-5" v-if="!pageLoading">By {{ post.author.name }} on {{ post.published }}</p>
           </div>
         </div>
       </div>
