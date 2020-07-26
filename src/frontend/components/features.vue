@@ -52,7 +52,7 @@ export default {
         },
         {
           name: 'Board',
-          icon: 'newspaper',
+          icon: 'view-dashboard-outline',
           shortDescription: 'Share ideas and updates',
           description: 'Post photos, updates, ideas, links, and much more.'
         },
