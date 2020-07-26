@@ -13,7 +13,7 @@ import (
 	"gitlab.com/flattrack/flattrack.io/src/backend/types"
 )
 
-// CheckIfEmailInDB
+// CheckIfEmailInDB ...
 // returns bool if an email is in the database
 func CheckIfEmailInDB(db *sql.DB, email string) (found bool, err error) {
 	sqlStatement := `select email from interested where email = $1`
@@ -29,7 +29,7 @@ func CheckIfEmailInDB(db *sql.DB, email string) (found bool, err error) {
 	return emailFromDB == email, err
 }
 
-// AddEmailToInterested
+// AddEmailToInterested ...
 // inserts an email into the database
 func AddEmailToInterested(db *sql.DB, interested types.InterestedSpec) (message string, err error) {
 	found, err := CheckIfEmailInDB(db, interested.Email)
@@ -61,7 +61,7 @@ func AddEmailToInterested(db *sql.DB, interested types.InterestedSpec) (message 
 	return "Your email has been added to the notify list", nil
 }
 
-// ResetAllEntries
+// ResetAllEntries ...
 // empties all emails sent
 func ResetAllEntries (db *sql.DB) (err error) {
 	sqlStatement := `delete from interested`

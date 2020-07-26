@@ -20,6 +20,8 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Logging ...
+// handler for printing request logs
 func Logging(next http.Handler) http.Handler {
 	// log all requests
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -30,7 +32,7 @@ func Logging(next http.Handler) http.Handler {
 	})
 }
 
-// JSONResponse
+// JSONResponse ...
 // sends a JSON response
 func JSONResponse(r *http.Request, w http.ResponseWriter, code int, output types.JSONMessageResponse) {
 	output.Metadata.URL = r.RequestURI
@@ -43,7 +45,7 @@ func JSONResponse(r *http.Request, w http.ResponseWriter, code int, output types
 	w.Write(response)
 }
 
-// HandleWebserver
+// HandleWebserver ...
 // manage starting of webserver
 func HandleWebserver(db *sql.DB) {
 	go func() {
@@ -57,7 +59,7 @@ func HandleWebserver(db *sql.DB) {
 
 	router.HandleFunc(apiEndpointPrefix, GetRoot)
 	for _, endpoint := range GetEndpoints(apiEndpointPrefix, db) {
-		router.HandleFunc(endpoint.EndpointPath, endpoint.HandlerFunc).Methods(endpoint.HttpMethod, http.MethodOptions)
+		router.HandleFunc(endpoint.EndpointPath, endpoint.HandlerFunc).Methods(endpoint.HTTPMethod, http.MethodOptions)
 	}
 
 	router.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {

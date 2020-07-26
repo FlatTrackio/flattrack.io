@@ -25,6 +25,8 @@ import (
 	"net/http"
 )
 
+// JSONResponseMetadata ...
+// metadata field in response
 type JSONResponseMetadata struct {
 	URL       string `json:"selfLink"`
 	Version   string `json:"version"`
@@ -32,29 +34,23 @@ type JSONResponseMetadata struct {
 	Response  string `json:"response"`
 }
 
+// JSONMessageResponse ...
+// generic structure for responses
 type JSONMessageResponse struct {
 	Metadata JSONResponseMetadata `json:"metadata"`
 	Spec     interface{}          `json:"spec"`
 }
 
+// InterestedSpec ...
+// fields for email notification form
 type InterestedSpec struct {
 	Email string `json:"email"`
 }
 
-type EmailStore struct {
-	Emails []string `json:"emails"`
-}
-
-type PackageJSON struct {
-	Name        string `json:"name"`
-	Version     string `json:"version"`
-	Description string `json:"description"`
-}
-
-// Endpoints
+// Endpoints ...
 // all API endpoints stored in an array
 type Endpoints []struct {
 	EndpointPath string
 	HandlerFunc  http.HandlerFunc
-	HttpMethod   string
+	HTTPMethod   string
 }

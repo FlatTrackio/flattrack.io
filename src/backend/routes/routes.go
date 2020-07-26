@@ -17,7 +17,7 @@ import (
 	"gitlab.com/flattrack/flattrack.io/src/backend/types"
 )
 
-// GetRoot
+// GetRoot ...
 // root endpoints of the API
 func GetRoot(w http.ResponseWriter, r *http.Request) {
 	// root of api
@@ -28,7 +28,7 @@ func GetRoot(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-// PostInterested
+// PostInterested ...
 // submits an email for alerting when FlatTrack is ready later on
 func PostInterested(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -54,6 +54,8 @@ func PostInterested(db *sql.DB) http.HandlerFunc {
 	}
 }
 
+// UnknownEndpoint ...
+// handle wildcard endpoints
 func UnknownEndpoint(w http.ResponseWriter, r *http.Request) {
 	// unknown endpoint
 	JSONResponse(r, w, 404, types.JSONMessageResponse{
