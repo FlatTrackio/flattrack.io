@@ -34,7 +34,7 @@ func GetRoot(w http.ResponseWriter, r *http.Request) {
 // submits an email for alerting when FlatTrack is ready later on
 func PostInterested(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		responseCode := http.StatusInternalServerError
+		responseCode := http.StatusBadRequest
 		responseMessage := "Failed to submit email address as interested"
 
 		var interestedSpec types.InterestedSpec
