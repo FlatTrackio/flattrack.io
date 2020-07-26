@@ -21,7 +21,13 @@ var _ = Describe("API interested tests", func() {
 	cwd, _ := os.Getwd()
 	os.Setenv("APP_DB_MIGRATIONS_PATH", fmt.Sprintf("%v/../../../migrations", cwd))
 
-	db, err := database.DB(common.GetDBusername(), common.GetDBpassword(), common.GetDBhost(), common.GetDBdatabase())
+	db, err := database.DB(
+		common.GetDBusername(),
+		common.GetDBpassword(),
+		common.GetDBhost(),
+		common.GetDBdatabase(),
+		common.GetDBsslmode(),
+	)
 	if err != nil {
 		log.Fatalln(err)
 		return
