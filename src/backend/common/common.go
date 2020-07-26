@@ -71,6 +71,12 @@ func GetDBpassword() (output string) {
 	return GetEnvOrDefault("APP_DB_PASSWORD", "postgres")
 }
 
+// GetDBsslmode ...
+// return the database sslmode to use
+func GetDBsslmode() (output string) {
+	return GetEnvOrDefault("APP_DB_SSLMODE", "disable")
+}
+
 // GetMigrationsPath ...
 // return the path of the database migrations to use
 func GetMigrationsPath() (output string) {
