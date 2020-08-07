@@ -6,6 +6,8 @@
 package feed
 
 import (
+	"log"
+
 	"github.com/mmcdole/gofeed"
 )
 
@@ -14,6 +16,7 @@ import (
 func GetLatestRSSPost () (*gofeed.Item, error) {
 	fp := gofeed.NewParser()
 	feed, err := fp.ParseURL("https://blog.flattrack.io/rss/")
+	log.Println(feed.Items)
 	latestPost := feed.Items[0]
 	return latestPost, err
 }
