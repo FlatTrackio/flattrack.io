@@ -16,7 +16,6 @@ import (
 	"gitlab.com/flattrack/flattrack.io/src/backend/interested"
 	"gitlab.com/flattrack/flattrack.io/src/backend/types"
 	"gitlab.com/flattrack/flattrack.io/src/backend/health"
-	"gitlab.com/flattrack/flattrack.io/src/backend/feed"
 )
 
 // GetRoot ...
@@ -54,26 +53,6 @@ func PostInterested(db *sql.DB) http.HandlerFunc {
 			},
 		})
 	}
-}
-
-// GetLatestRSSPost ...
-// responds with the latest blog post,
-func GetLatestRSSPost(w http.ResponseWriter, r *http.Request) {
-	response := "Failed to find latest post"
-	responseCode := http.StatusInternalServerError
-
-	post, err := feed.GetLatestRSSPost()
-	if err == nil {
-		response = "Successfully found the latest post"
-		responseCode = http.StatusOK
-	}
-
-	JSONResponse(r, w, responseCode, types.JSONMessageResponse{
-		Metadata: types.JSONResponseMetadata{
-			Response: response,
-		},
-		Spec: post,
-	})
 }
 
 // UnknownEndpoint ...

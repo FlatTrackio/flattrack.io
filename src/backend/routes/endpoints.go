@@ -22,10 +22,5 @@ func GetEndpoints(endpointPrefix string, db *sql.DB) types.Endpoints {
 			HandlerFunc:  PostInterested(db),
 			HTTPMethod:   http.MethodPost,
 		},
-		{
-			EndpointPath: endpointPrefix + "/latestPost",
-			HandlerFunc:  GetLatestRSSPost,
-			HTTPMethod:   http.MethodGet,
-		},
 	}
 }
