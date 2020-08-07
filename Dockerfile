@@ -4,7 +4,7 @@ ARG AppBuildVersion="0.0.0"
 ARG AppBuildHash="???"
 ARG AppBuildDate="???"
 ARG AppBuildMode="development"
-
+RUN apk add tzdata
 WORKDIR /app
 COPY src /app/src
 COPY public /app/public
@@ -39,6 +39,7 @@ WORKDIR /app
 ENV PATH=/app
 COPY --from=ui /app/dist /app/dist
 COPY --from=ui /app/package.json .
+COPY --from=ui /usr/share/zoneinfo /usr/share/zoneinfo
 COPY --from=api /app/flattrackio .
 COPY --from=api /etc/passwd /etc/passwd
 COPY --from=api /etc/group /etc/group
