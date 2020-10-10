@@ -47,7 +47,7 @@ export default {
           }).catch(err => {
             Toast.open({
               duration: 8000,
-              message: `An error has occured: ${err.response.metadata.response || err}`,
+              message: `An error has occurred: ${err.response.metadata.response || err}`,
               position: 'is-bottom',
               type: 'is-danger',
               size: 'is-medium',
