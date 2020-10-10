@@ -102,3 +102,12 @@ lint_backend:
     - go get -u golang.org/x/lint/golint
   script:
     - golint -set_exit_status src/backend/... test/backend/e2e/...
+
+spell_check:
+  stage: lint
+  image: golang:1.13.10-alpine3.11
+  allow_failure: true
+  before_script:
+    - go get -u github.com/client9/misspell/cmd/misspell
+  script:
+    - misspell -error src docs migrations pubic template k8s-manifests README*
