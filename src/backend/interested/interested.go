@@ -38,7 +38,7 @@ func AddEmailToInterested(db *sql.DB, interested types.InterestedSpec) (message 
 		if err != nil {
 			errString = err.Error()
 		}
-		errorMsg := "Did not insert row. Email either exists or an error occured. " + errString
+		errorMsg := "Did not insert row. Email either exists or an error occurred. " + errString
 		return "Your email has been added to the notify list", errors.New(errorMsg)
 	}
 	valid := common.RegexMatchEmail(interested.Email)
