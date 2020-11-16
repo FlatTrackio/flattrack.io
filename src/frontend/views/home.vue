@@ -83,6 +83,23 @@
                 href="https://simple.wikipedia.org/wiki/Free_and_open-source_software">
                 What's FOSS?
               </b-button>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <h1 class="title is-2">Contribution</h1>
+              <p class="subtitle is-4">
+                FlatTrack is now a public project. If you wish to contribute, please head over to the project page:
+              </p>
+              <b-button
+                type="is-white"
+                icon-left="hammer-wrench"
+                tag="a"
+                target="_blank"
+                size="is-medium"
+                href="https://gitlab.com/flattrack/flattrack">
+                GitLab project page
+              </b-button>
             </div>
           </div>
         </div>
