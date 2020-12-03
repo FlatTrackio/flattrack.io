@@ -14,11 +14,9 @@
                 <b-navbar-item href="/">
                     Home
                 </b-navbar-item>
-                <!--
-                <b-navbar-item href="https://docs.flattrack.io">
+                <b-navbar-item href="https://flattrack.gitlab.io/flattrack" target="_blank">
                     Documentation
                 </b-navbar-item>
-                -->
                 <b-navbar-item href="https://blog.flattrack.io">
                     Blog
                 </b-navbar-item>
