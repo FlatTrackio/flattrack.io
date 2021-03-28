@@ -3,7 +3,7 @@
     post an email to the interested list
 */
 
-import Request from '@/frontend/requests/requests'
+import Request from '@//requests/requests'
 
 // PostInterested
 // adds an email to the interested list

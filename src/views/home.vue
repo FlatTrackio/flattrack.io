@@ -133,7 +133,7 @@
 </template>
 
 <script>
-import common from '@/frontend/common/common'
+import common from '@//common/common'
 
 export default {
   name: 'home',
@@ -150,10 +150,10 @@ export default {
     }
   },
   components: {
-    navbar: () => import('@/frontend/components/navbar'),
-    features: () => import('@/frontend/components/features'),
-    interested: () => import('@/frontend/components/interested'),
-    ftfooter: () => import('@/frontend/components/footer')
+    navbar: () => import('@//components/navbar'),
+    features: () => import('@//components/features'),
+    interested: () => import('@//components/interested'),
+    ftfooter: () => import('@//components/footer')
   },
   async beforeMount () {
     this.CheckDeviceIsMobile()

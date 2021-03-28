@@ -71,4 +71,10 @@ html {
     box-shadow: black 0 0px 66px -27px;
     top: 1px;
 }
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>

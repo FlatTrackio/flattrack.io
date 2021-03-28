@@ -15,7 +15,7 @@
 
 <script>
 import axios from 'axios'
-import interested from '@/frontend/requests/public/interested'
+import interested from '@//requests/public/interested'
 import { DialogProgrammatic as Dialog, ToastProgrammatic as Toast } from 'buefy'
 
 export default {

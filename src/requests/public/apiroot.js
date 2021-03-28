@@ -3,7 +3,7 @@
     get public metadata of API
 */
 
-import Request from '@/frontend/requests/requests'
+import Request from '@//requests/requests'
 
 // GetAPIroot
 // returns public metadata of API

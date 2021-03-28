@@ -2,22 +2,22 @@ export default [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/frontend/views/home.vue')
+    component: () => import('@//views/home.vue')
   },
   {
     path: '/about',
     name: 'about',
-    component: () => import('@/frontend/views/about.vue')
+    component: () => import('@//views/about.vue')
   },
   {
     path: '/contact',
     name: 'contact',
-    component: () => import('@/frontend/views/contact.vue')
+    component: () => import('@//views/contact.vue')
   },
   {
     path: '/privacy-policy',
     name: 'privacy',
-    component: () => import('@/frontend/views/privacy-policy.vue')
+    component: () => import('@//views/privacy-policy.vue')
   },
   {
     path: '/privacy',
@@ -26,6 +26,6 @@ export default [
   {
     path: '*',
     name: 'unknown-page',
-    component: () => import('@/frontend/views/unknown-page.vue')
+    component: () => import('@//views/unknown-page.vue')
   }
 ]

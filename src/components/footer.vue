@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import apiroot from '@/frontend/requests/public/apiroot'
+import apiroot from '@//requests/public/apiroot'
 
 export default {
   name: 'footer',

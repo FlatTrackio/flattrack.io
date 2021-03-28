@@ -60,9 +60,9 @@
 </template>
 
 <script>
-import navbar from '@/frontend/components/navbar'
-import ftfooter from '@/frontend/components/footer'
-import headerDisplay from '@/frontend/components/header-display'
+import navbar from '@//components/navbar'
+import ftfooter from '@//components/footer'
+import headerDisplay from '@//components/header-display'
 
 export default {
   name: 'contact',

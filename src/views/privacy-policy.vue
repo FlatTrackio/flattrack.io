@@ -202,9 +202,9 @@
 </template>
 
 <script>
-import navbar from '@/frontend/components/navbar'
-import headerDisplay from '@/frontend/components/header-display'
-import ftfooter from '@/frontend/components/footer'
+import navbar from '@//components/navbar'
+import headerDisplay from '@//components/header-display'
+import ftfooter from '@//components/footer'
 
 export default {
   name: 'privacy-policy',
