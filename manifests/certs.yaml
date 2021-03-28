@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-prod
+  namespace: flattrackio-site
+spec:
+  secretName: letsencrypt-prod
+  issuerRef:
+    name: flattrackio-site-blog-letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: 'flattrack.io'
+  dnsNames:
+    - 'flattrack.io'

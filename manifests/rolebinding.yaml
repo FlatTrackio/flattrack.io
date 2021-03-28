@@ -1,0 +1,14 @@
+#ci-sa:noapply=true
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: flattrackio-site-ci
+  namespace: flattrackio-site
+subjects:
+- kind: ServiceAccount
+  name: flattrackio-site-ci
+  namespace: flattrackio-site
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: flattrackio-site-ci

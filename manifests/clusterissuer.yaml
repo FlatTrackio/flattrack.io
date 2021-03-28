@@ -1,0 +1,21 @@
+#ci-sa:noapply=true
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: calebwoodbine.public@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+    - dns01:
+        digitalocean:
+          tokenSecretRef:
+            name: digitalocean-dns
+            key: do-api-key
+      selector:
+        dnsNames:
+          - '*.flattrack.io'
+          - 'flattrack.io'

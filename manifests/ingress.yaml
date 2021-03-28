@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flattrackio-site
+  namespace: flattrackio-site
+  labels:
+    environment: production
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+spec:
+  tls:
+  - hosts:
+    - "flattrack.io"
+    secretName: letsencrypt-prod
+  rules:
+  - host: 'flattrack.io'
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: flattrackio-site
+            port:
+              number: 8080
