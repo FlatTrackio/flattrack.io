@@ -16,9 +16,6 @@ variables:
   ARCH_DEFAULT: "amd64"
   APP_BUILD_VERSION: 0.0.0
   APP_BUILD_MODE: development
-  POSTGRES_DB: flattrackio
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
 
 .kaniko-build-pre-script: &kaniko-build-pre-script |
   set -x
@@ -54,7 +51,7 @@ variables:
 build-amd64:
   stage: build
   image:
-    name: gcr.io/kaniko-project/executor:debug-v1.0.0
+    name: gcr.io/kaniko-project/executor:debug-v1.3.0
     entrypoint: [""]
   retry: 2
   variables:
@@ -66,24 +63,6 @@ build-amd64:
   script:
     - *kaniko-build
 
-test_backend_e2e:
-  stage: test
-  image: golang:1.13.10-alpine3.11
-  variables:
-    APP_DB_HOST: postgres
-    CGO_ENABLED: "0"
-  services:
-    - postgres:12.2-alpine
-  before_script:
-    - apk add git gcc
-    - go get github.com/onsi/ginkgo/ginkgo
-    - go get github.com/onsi/gomega/...
-    - go build -o flattrackio src/backend/main.go
-    - ./flattrackio &
-  script:
-    - ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --progress test/backend/e2e
-    - pkill flattrackio || true
-    
 lint_frontend:
   stage: lint
   image: node:12.10.0-alpine
@@ -92,16 +71,6 @@ lint_frontend:
     - npm i
   script:
     - npm run lint
-
-lint_backend:
-  stage: lint
-  image: golang:1.13.10-alpine3.11
-  allow_failure: true
-  before_script:
-    - apk add git gcc
-    - go get -u golang.org/x/lint/golint
-  script:
-    - golint -set_exit_status src/backend/... test/backend/e2e/...
 
 spell_check:
   stage: lint
