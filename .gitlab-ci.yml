@@ -104,6 +104,7 @@ spell_check:
   image: golang:1.13.10-alpine3.11
   allow_failure: true
   before_script:
+    - apk add --no-cache git
     - go get -u github.com/client9/misspell/cmd/misspell
   script:
     - misspell -error src docs migrations pubic template k8s-manifests README*
