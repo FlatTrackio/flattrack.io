@@ -10,7 +10,7 @@ COPY src /app/src
 COPY public /app/public
 COPY *.js *.json /app/
 RUN npm i
-RUN npm run build:frontend
+RUN npm run build
 
 FROM registry.gitlab.com/safesurfer/go-http-server:1.1.0
 ENV APP_SERVE_FOLDER=/app/dist
