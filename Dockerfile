@@ -15,5 +15,5 @@ RUN npm run build
 FROM registry.gitlab.com/safesurfer/go-http-server:1.1.0
 ENV APP_SERVE_FOLDER=/app/dist
 LABEL maintainer="Caleb Woodbine <calebwoodbine.public@gmail.com>"
-COPY --from=build /site/public /app/dist
+COPY --from=build /app/dist /app/dist
 COPY template-map.yaml /app/map.yaml
