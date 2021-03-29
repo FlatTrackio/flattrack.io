@@ -30,6 +30,6 @@ Please read [the contributing guide](docs/CONTRIBUTING.md)
 Please read [the build guide](docs/BUILDING.md).
 
 ## License
-Copyright 2019 Caleb Woodbine.
+Copyright 2019-2021 Caleb Woodbine.
 This project is licensed under the [GPL-3.0](http://www.gnu.org/licenses/gpl-3.0.html) and is [Free Software](https://www.gnu.org/philosophy/free-sw.en.html).
 This program comes with absolutely no warranty.
