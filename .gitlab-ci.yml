@@ -26,8 +26,7 @@ include:
   cat << EOF | tee -a $CI_PROJECT_DIR/.env
   APP_VERSION=${BUILD_DATE}
   EOF
-  PROJECT_PATH=$(echo $CI_PROJECT_PATH | tr '[:upper:]' '[:lower:]')
-  export KANIKO_RELEASE_DESTINATIONS="--destination $CI_REGISTRY/$PROJECT_PATH:latest --destination $CI_REGISTRY/$PROJECT_PATH:$BUILD_DATE"
+  export KANIKO_RELEASE_DESTINATIONS="--destination $CI_REGISTRY_IMAGE:latest --destination $CI_REGISTRY_IMAGE:$BUILD_DATE"
 
 .kaniko-build: &kaniko-build |
   /kaniko/executor \

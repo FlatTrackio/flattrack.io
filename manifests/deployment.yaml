@@ -19,7 +19,7 @@ spec:
       automountServiceAccountToken: false
       containers:
       - name: flattrackio-site-blog
-        image: registry.gitlab.com/flattrack/flattrack.io:${APP_VERSION}
+        image: ${CI_REGISTRY_IMAGE}:${APP_VERSION}
         imagePullPolicy: IfNotPresent
         securityContext:
           readOnlyRootFilesystem: true
