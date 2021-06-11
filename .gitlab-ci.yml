@@ -42,7 +42,7 @@ stages:
     --snapshotMode=redo \
     --context $CI_PROJECT_DIR \
     --dockerfile $CI_PROJECT_DIR/Dockerfile \
-    --build-arg ARCH="$ARCH" \
+    --build-arg ARCH="$BASE_ARCH" \
     $KANIKO_DESTINATIONS \
     $KANIKO_RELEASE_DESTINATIONS
 
