@@ -6,6 +6,7 @@ variables:
 
 stages:
   - lint
+  - prepare
   - build-container
   - post-build
   - deploy
@@ -25,13 +26,8 @@ stages:
   EOF
 
 .kaniko-build-taggable-name: &kaniko-build-taggable-name |
-  BUILD_DATE="$(date +%Y%m%d)$((1 + RANDOM % 9))"
-  if [ ! -f $CI_PROJECT_DIR/.env ]; then
-    cat << EOF | tee -a $CI_PROJECT_DIR/.env
-  APP_VERSION=${BUILD_DATE}
-  EOF
-  fi
-  export KANIKO_RELEASE_DESTINATIONS="--destination $CI_REGISTRY_IMAGE:latest-$ARCH --destination $CI_REGISTRY_IMAGE:$BUILD_DATE-$ARCH"
+  export $(cat $CI_PROJECT_DIR/.env | xargs)
+  export KANIKO_RELEASE_DESTINATIONS="--destination $CI_REGISTRY_IMAGE:latest-$ARCH --destination $CI_REGISTRY_IMAGE:$APP_VERSION-$ARCH"
   if [ ! $ARCH = $ARCH_DEFAULT ]; then
     export BASE_ARCH="-${ARCH}"
   fi
@@ -64,6 +60,21 @@ stages:
     paths:
       - .env
 
+prepare:
+  stage: prepare
+  image:
+    name: alpine:3.12
+    entrypoint: [""]
+  script:
+    - |
+        BUILD_DATE="$(date +%Y%m%d)$((1 + RANDOM % 9))"
+        cat << EOF | tee -a $CI_PROJECT_DIR/.env
+        APP_VERSION=${BUILD_DATE}
+        EOF
+  artifacts:
+    paths:
+      - .env
+      
 build-container-amd64:
   <<: *build-container
   variables:
