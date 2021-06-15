@@ -17,6 +17,18 @@ spec:
         environment: production
     spec:
       automountServiceAccountToken: false
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - flattrackio-site
+              topologyKey: "kubernetes.io/hostname"
       containers:
       - name: flattrackio-site-blog
         image: ${CI_REGISTRY_IMAGE}:${APP_VERSION}
