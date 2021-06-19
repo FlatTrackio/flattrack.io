@@ -16,7 +16,8 @@ FROM registry.gitlab.com/safesurfer/go-http-server:1.2.0$ARCH
 ENV APP_SERVE_FOLDER=/app/dist \
     APP_TEMPLATE_MAP_PATH=/app/map.yaml \
     APP_HEADER_SET_ENABLE=true \
-    APP_HEADER_MAP_PATH=/app/headers.yaml
+    APP_HEADER_MAP_PATH=/app/headers.yaml \
+    APP_VUEJS_HISTORY_MODE=true
 LABEL maintainer="Caleb Woodbine <calebwoodbine.public@gmail.com>"
 COPY --from=build /app/dist /app/dist
 COPY template-map.yaml /app/map.yaml
