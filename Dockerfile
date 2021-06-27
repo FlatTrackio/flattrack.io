@@ -12,7 +12,8 @@ COPY *.js *.json /app/
 RUN npm i
 RUN npm run build
 
-FROM registry.gitlab.com/safesurfer/go-http-server:1.2.0$ARCH
+ARG ARCH
+FROM registry.gitlab.com/safesurfer/go-http-server:1.3.0-$ARCH
 ENV APP_SERVE_FOLDER=/app/dist \
     APP_TEMPLATE_MAP_PATH=/app/map.yaml \
     APP_HEADER_SET_ENABLE=true \
