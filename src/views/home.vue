@@ -152,7 +152,6 @@ export default {
   components: {
     navbar: () => import('@//components/navbar'),
     features: () => import('@//components/features'),
-    interested: () => import('@//components/interested'),
     ftfooter: () => import('@//components/footer')
   },
   async beforeMount () {
