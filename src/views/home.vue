@@ -118,11 +118,11 @@
               </p>
               <br>
               <div class="container">
-                <b-progress type="is-primary" :value="30" max="100">30%</b-progress>
+                <b-progress type="is-primary" :value="35" max="100">35%</b-progress>
               </div>
-              <section class="section">
-                <interested/>
-              </section>
+              <!-- <section class="section">
+                   <interested/>
+                   </section> -->
             </div>
           </div>
         </div>
