@@ -14,7 +14,6 @@
 
 <script>
 import apiroot from '@/requests/public/apiroot'
-import constants from '@/constants/constants'
 
 export default {
   name: 'footer'
