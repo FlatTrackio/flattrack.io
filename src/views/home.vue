@@ -114,7 +114,7 @@
                 FlatTrack is under construction
               </h1>
               <p class="subtitle is-4">
-                Early equiries will be available soon, we look forward to helping you and your flat.
+                Early enquiries will be available soon, we look forward to helping you and your flat.
               </p>
               <br>
               <div class="container">
