@@ -158,11 +158,8 @@ spell_check:
     - misspell -error src docs migrations pubic template k8s-manifests README*
 
 pages:
-  image: $IMAGE_HUGO_ALPINE
+  image: $IMAGE_NODE
   stage: pages
-  variables:
-    HUGO_ENV: production
-    HUGO_DESTINATION: public
   script:
     - npm i
     - npm run build
