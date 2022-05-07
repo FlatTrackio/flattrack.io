@@ -3,12 +3,14 @@ variables:
   ARCHES: amd64 arm64
   ARCH_DEFAULT: amd64
   REGISTRIES: $CI_REGISTRY
+  IMAGE_NODE: node:12.10.0-alpine
 
 stages:
   - lint
   - build-container
   - post-build
   - deploy
+  - pages
 
 .kaniko-build-pre-script: &kaniko-build-pre-script |
   set -x
@@ -52,6 +54,9 @@ stages:
     - *kaniko-build-taggable-name
   script:
     - *kaniko-build
+  only:
+    variables:
+      - $KUBECONFIG_FROM_ENV
       
 build-container-amd64:
   <<: *build-container
@@ -95,6 +100,9 @@ tag-container-image:
             docker manifest push $reg/$PROJECT_PATH:$tag
           done
         done
+  only:
+    variables:
+      - $KUBECONFIG_FROM_ENV
 
 deploy:
   stage: deploy
@@ -124,8 +132,11 @@ deploy:
           envsubst < $MANIFEST | kubectl apply -f -
         done
   only:
+    refs:
     - master
     - tags
+    variables:
+      - $KUBECONFIG_FROM_ENV
 
 lint_frontend:
   stage: lint
@@ -145,3 +156,23 @@ spell_check:
     - go get -u github.com/client9/misspell/cmd/misspell
   script:
     - misspell -error src docs migrations pubic template k8s-manifests README*
+
+pages:
+  image: $IMAGE_HUGO_ALPINE
+  stage: pages
+  variables:
+    HUGO_ENV: production
+    HUGO_DESTINATION: public
+  script:
+    - npm i
+    - npm run build
+    - cp -r dist public
+  artifacts:
+    paths:
+      - public
+  only:
+    refs:
+      - master
+  except:
+    variables:
+      - $KUBECONFIG_FROM_ENV
