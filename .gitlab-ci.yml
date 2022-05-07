@@ -163,7 +163,7 @@ pages:
   script:
     - npm i
     - npm run build
-    - cp -r dist/ public/
+    - mv -r dist/ public/
   artifacts:
     paths:
       - public
